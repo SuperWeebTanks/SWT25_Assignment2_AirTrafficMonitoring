@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWT25_Assignment2_AirTrafficMonitoring", "SWT25_Assignment2_AirTrafficMonitoring\SWT25_Assignment2_AirTrafficMonitoring.csproj", "{59D2DC2D-8657-4277-8ED4-DD24DA1391A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59D2DC2D-8657-4277-8ED4-DD24DA1391A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D2DC2D-8657-4277-8ED4-DD24DA1391A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D2DC2D-8657-4277-8ED4-DD24DA1391A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D2DC2D-8657-4277-8ED4-DD24DA1391A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADA82649-72D1-48FC-A3BC-F54982405A95}
+	EndGlobalSection
+EndGlobal
