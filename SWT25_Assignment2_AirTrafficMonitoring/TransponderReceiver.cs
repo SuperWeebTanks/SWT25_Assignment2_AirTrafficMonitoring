@@ -23,7 +23,11 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
     public class TransponderReceiverFactory
     {
         public static ITransponderReceiver CreateTransponderDataReceiver()
+        {
+            return new Airport(); 
+        }
     }
     */
+    
 
 }
