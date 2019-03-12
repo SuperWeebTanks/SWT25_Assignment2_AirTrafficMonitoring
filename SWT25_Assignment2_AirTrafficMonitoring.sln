@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWT25_Assignment2_AirTrafficMonitoring", "SWT25_Assignment2_AirTrafficMonitoring\SWT25_Assignment2_AirTrafficMonitoring.csproj", "{59D2DC2D-8657-4277-8ED4-DD24DA1391A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverApplication", "Undervisningsmateriale\TransponderReceiverApplication\TransponderReceiverApplication.csproj", "{5BF5A5A7-E181-4321-A362-D16F4849586A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverUser", "Undervisningsmateriale\TransponderReceiverUser\TransponderReceiverUser.csproj", "{AD9E07F6-3D14-47C9-955E-FF20C7FE5433}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverUser.Test.Unit", "Undervisningsmateriale\TransponderReceiverUser.Test.Unit\TransponderReceiverUser.Test.Unit.csproj", "{3F42207F-5BB8-4BB5-9E68-4821FCC4B176}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{59D2DC2D-8657-4277-8ED4-DD24DA1391A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59D2DC2D-8657-4277-8ED4-DD24DA1391A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59D2DC2D-8657-4277-8ED4-DD24DA1391A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BF5A5A7-E181-4321-A362-D16F4849586A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF5A5A7-E181-4321-A362-D16F4849586A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF5A5A7-E181-4321-A362-D16F4849586A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF5A5A7-E181-4321-A362-D16F4849586A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD9E07F6-3D14-47C9-955E-FF20C7FE5433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD9E07F6-3D14-47C9-955E-FF20C7FE5433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD9E07F6-3D14-47C9-955E-FF20C7FE5433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9E07F6-3D14-47C9-955E-FF20C7FE5433}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F42207F-5BB8-4BB5-9E68-4821FCC4B176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F42207F-5BB8-4BB5-9E68-4821FCC4B176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F42207F-5BB8-4BB5-9E68-4821FCC4B176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F42207F-5BB8-4BB5-9E68-4821FCC4B176}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

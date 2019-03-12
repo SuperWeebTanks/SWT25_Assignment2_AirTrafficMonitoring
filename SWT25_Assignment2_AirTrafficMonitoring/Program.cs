@@ -1,3 +1,4 @@
+﻿using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,30 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            Console.WriteLine("Hello World");
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            var Aircrafts = new List<string>
+            {
+                "BTR312;2004;18204;5500;88;300",
+                "BTR312;3200;18602;5500;100;302",
+                "BTR312;4200;18802;5500;122;304"
+            };
+
+            var factory = new CommercialTrackFactory();
+            var tracks = factory.CreateTracks(Aircrafts, DateTime.Now); 
+            
+            foreach(var track in tracks)
+            {
+                Console.WriteLine($"Tag: {track.Tag}");
+                Console.WriteLine($"Current altitude: x:{track.CurrentPositionX.ToString()}, y:{track.CurrentPositionY.ToString()}");
+                Console.WriteLine($"Current altitude (Meters): {track.CurrentAltitude.ToString()}");
+                Console.WriteLine($"Current Horizontal Velocity (m/s): {track.CurrentHorizontalVelocity.ToString()}");
+                Console.WriteLine($"Current Compass Course: {track.CurrentCompassCourse}");
+                Console.WriteLine( $"Timestamp: {track.TimeStamp.ToString()}\n");
+                
+            }
+            Console.ReadLine();
         }
+
     }
 }
