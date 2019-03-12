@@ -8,11 +8,24 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
 {
     public abstract class DecodeFactory
     {
+        /// <summary>
+        /// Abstract Factory Class 
+        /// </summary>
+        /// <param name="transponderInfo"></param>
+        /// <param name="time"></param>
+        /// <returns>A list of Tracks</returns>
         public abstract List<Track> CreateTracks(List<string> transponderInfo, DateTime time);
     }
 
     public class CommercialTrackFactory : DecodeFactory
     {
+        /// <summary>
+        /// Factorymethod for Commercial Aircraft Tracks
+        /// </summary>
+        /// <param name="transponderInfo"></param>
+        /// <param name="time"></param>
+        /// <returns>A list of CommercialTracks</returns>
+        #region FactoryMethod
         public override List<Track> CreateTracks(List<string> transponderInfo, DateTime time)
         {
             if (transponderInfo != null)
@@ -38,5 +51,6 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
             else
                 return null; 
         }
+        #endregion
     }
 }

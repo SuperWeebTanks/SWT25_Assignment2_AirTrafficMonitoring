@@ -42,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Airport\Airport.cs" />
+    <Compile Include="Airport\ISignalForwarder.cs" />
+    <Compile Include="AirTrafficMonitor\Air Traffic Monitor.cs" />
+    <Compile Include="AirTrafficMonitor\IDisplay.cs" />
+    <Compile Include="AirTrafficMonitor\IOccurenceDetector.cs" />
+    <Compile Include="AirTrafficMonitor\OccurenceLogger.cs" />
     <Compile Include="DecodeFactory\DecodeFactory.cs" />
     <Compile Include="DecodeFactory\Track.cs" />
     <Compile Include="Program.cs" />
