@@ -14,7 +14,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         /// <param name="transponderInfo"></param>
         /// <param name="time"></param>
         /// <returns>A list of Tracks</returns>
-        public abstract List<Track> CreateTracks(List<string> transponderInfo, DateTime time);
+        public abstract List<Track> CreateTracks(List<string> transponderInfo);
     }
 
     public class CommercialTrackFactory : DecodeFactory
@@ -23,10 +23,9 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         /// Factorymethod for Commercial Aircraft Tracks
         /// </summary>
         /// <param name="transponderInfo"></param>
-        /// <param name="time"></param>
         /// <returns>A list of CommercialTracks</returns>
         #region FactoryMethod
-        public override List<Track> CreateTracks(List<string> transponderInfo, DateTime time)
+        public override List<Track> CreateTracks(List<string> transponderInfo)
         {
             if (transponderInfo != null)
             {
@@ -41,9 +40,10 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
                     c_Track.CurrentPositionX = int.Parse(properties[1]);
                     c_Track.CurrentPositionY = int.Parse(properties[2]);
                     c_Track.CurrentAltitude = int.Parse(properties[3]);
-                    c_Track.CurrentHorizontalVelocity = int.Parse(properties[4]);
-                    c_Track.CurrentCompassCourse = properties[5];
-                    c_Track.TimeStamp = time;
+                    c_Track.TimeStamp = new DateTime(int.Parse(properties[4].Substring(0,4)), int.Parse(properties[4].Substring(4,2)),
+                        int.Parse(properties[4].Substring(6, 2)), int.Parse(properties[4].Substring(8, 2)), int.Parse(properties[4].Substring(10, 2))
+                        , int.Parse(properties[4].Substring(12, 2)), int.Parse(properties[4].Substring(14,3)));
+
                     commercialTracks.Add(c_Track); 
                 }
                 return commercialTracks; 

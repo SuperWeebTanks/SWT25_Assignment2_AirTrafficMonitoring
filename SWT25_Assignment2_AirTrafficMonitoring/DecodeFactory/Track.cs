@@ -34,7 +34,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         public int CurrentHorizontalVelocity { get; set; }        
         public int CurrentAltitude { get; set; }
         //Not sure if this needs restrictions. 
-        public string CurrentCompassCourse { get; set; }
+        public int CurrentCompassCourse { get; set; }
         public DateTime TimeStamp { get; set; }
         #endregion
     }

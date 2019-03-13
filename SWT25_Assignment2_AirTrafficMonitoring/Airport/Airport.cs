@@ -11,7 +11,10 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.Airport
     {
         /// <summary>
         /// Airport Constructor
-        /// Dependency injection
+        /// Dependency injection for 
+        /// <see cref="ISignalForwarder"/>
+        /// <see cref="ITransponderReceiver"/>
+        /// <see cref="TransponderReceiverFactory"/>
         /// </summary>
         /// <param name="receiver"></param>
         /// <param name="factory"></param>

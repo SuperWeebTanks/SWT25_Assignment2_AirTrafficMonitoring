@@ -15,13 +15,13 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
             #region DecodeFactory Test
             var Aircrafts = new List<string>
             {
-                "BTR312;2004;18204;5500;88;300",
-                "BTR312;3200;18602;5500;100;302",
-                "BTR312;4200;18802;5500;122;304"
+                "BTR312;2004;18204;5500;20151006213456789",
+                "BTR312;3200;18602;5500;20151006213456789",
+                "BTR312;4200;18802;5500;20151006213456789"
             };
 
             var factory = new CommercialTrackFactory();
-            var tracks = factory.CreateTracks(Aircrafts, DateTime.Now); 
+            var tracks = factory.CreateTracks(Aircrafts); 
             
             foreach(var track in tracks)
             {
