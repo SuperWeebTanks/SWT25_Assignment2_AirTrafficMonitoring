@@ -37,6 +37,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         public int CurrentCompassCourse { get; set; }
         public DateTime TimeStamp { get; set; }
         #endregion
+        public abstract void PrintTrack();
     }
 
     public class CommercialTrack : Track
@@ -49,6 +50,16 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         public CommercialTrack()
         {
             AircraftType = "Commercial";
+        }
+
+        public override void PrintTrack()
+        {
+            Console.WriteLine($"Tag: {Tag}");
+            Console.WriteLine($"Current altitude: x:{CurrentPositionX.ToString()}, y:{CurrentPositionY.ToString()}");
+            Console.WriteLine($"Current altitude (Meters): {CurrentAltitude.ToString()}");
+            Console.WriteLine($"Current Horizontal Velocity (m/s): {CurrentHorizontalVelocity.ToString()}");
+            Console.WriteLine($"Current Compass Course: {CurrentCompassCourse}");
+            Console.WriteLine($"Timestamp: {TimeStamp.ToString()}\n");
         }
 
         #endregion
