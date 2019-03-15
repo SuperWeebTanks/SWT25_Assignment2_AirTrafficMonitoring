@@ -9,28 +9,20 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 {
     public interface IDisplay
     {
-        void RenderOccurences(Track observedTrack, List<Track> OccurenceTracks);
+        void RenderOccurence(Track observedTrack, Track occurenceTrack, DateTime occurenceTime);
         void RenderTrack(Track updatedTrack);
     }
 
     public class MonitorConsole : IDisplay
     {
-        public void RenderOccurences(Track observedTrack, List<Track> OccurenceTracks)
+        public void RenderOccurence(Track observedTrack, Track occurenceTrack, DateTime occurenceTime)
         {
-            Console.WriteLine("WARNING: COLLISIONS MAY OCCOUR!");
-            Console.WriteLine($"AIRCRAFT IN COLLISION COURSE: {observedTrack.Tag}");
-            Console.WriteLine($"AIRCRAFT(s) IT MAY COLLIDE WITH: ");
-            foreach(var track in OccurenceTracks)
-            {
-                Console.Write($"{observedTrack.Tag}, "); 
-            }
-            Console.Write("PLEASE ADVISE CAUTION!");
-
+            Console.WriteLine("WARNING: COLLISION MAY OCCUR!");
+            Console.WriteLine($"POTENTIAL COLLISION BETWEEN AIRCRAFTS: {observedTrack.Tag} and {occurenceTrack.Tag} at {occurenceTime}");
         }
 
         List<Track> RenderedTracks { get; set; }
         
-
         public void RenderTrack(Track updatedTrack)
         {
             if (RenderedTracks.Find(x => x.Tag.Contains(updatedTrack.Tag)) != null)
