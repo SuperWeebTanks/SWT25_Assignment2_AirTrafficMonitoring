@@ -11,6 +11,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
     {
         public IOccurenceDetector Detector { get; set; }
         public IDisplay Display { get; set; }
+        public OccurrenceLogger Logger { get; set; }
     }
 
     public class Commercial_ATM : Air_Traffic_Monitor
@@ -20,10 +21,11 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         public Track OccurenceTrack { get; set; }
         public DateTime OccurrenceTime { get; set; }
 
-        public Commercial_ATM(IOccurenceDetector detector, IDisplay display)
+        public Commercial_ATM(IOccurenceDetector detector, IDisplay display, OccurrenceLogger logger)
         {
             Detector = detector;
             Display = display;
+            Logger = logger;
             Detector.OccurenceDetectedEvent += HandleOccurenceEvent;
         }
 
@@ -37,7 +39,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             Display.RenderOccurence(ObservedTrack, OccurenceTrack, OccurrenceTime);
             
             // Log occurence
+            Logger.LogOccurrences(ObservedTrack, OccurenceTrack, OccurrenceTime);
         }
     }
-
 }
