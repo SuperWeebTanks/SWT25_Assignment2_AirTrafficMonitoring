@@ -21,7 +21,7 @@ namespace AirTrafficMonitor.Unit.Test
             [SetUp]
             public void SetUp()
             {
-                _receivedOccurenceEventArgs = new OccurrenceEventArgs();
+                _receivedOccurenceEventArgs = null;
                 _uut = new Commercial_OD();
                 _observedTrack = new CommercialTrack();
                 _occurenceTrack = new CommercialTrack();
@@ -41,14 +41,13 @@ namespace AirTrafficMonitor.Unit.Test
                 
                 _occurenceTrack.Tag = "Test02";
                 _occurenceTrack.CurrentAltitude = 400;
-                _observedTrack.CurrentPositionX = 5000;
-                _observedTrack.CurrentPositionY = 5000;
+                _occurenceTrack.CurrentPositionX = 5000;
+                _occurenceTrack.CurrentPositionY = 5000;
                 _occurenceTracks.Add(_occurenceTrack);
 
                 _uut.CheckOccurrence(_observedTrack, _occurenceTracks);
 
                 Assert.That(_receivedOccurenceEventArgs, Is.Not.Null);
             }
-
     }
 }
