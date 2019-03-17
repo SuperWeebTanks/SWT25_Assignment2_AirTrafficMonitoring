@@ -32,7 +32,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.Airport
         #endregion
         #region Properties
 
-        public CommercialTrackFactory Decode { get; private set; };
+        public CommercialTrackFactory Decode { get; private set; }
         public ITransponderReceiver Receiver { get; private set; }
         public ISignalForwarder Forwarder { get; private set; }
  

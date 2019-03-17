@@ -25,9 +25,9 @@ namespace Display.Test.Unit
         [SetUp]
         public void Setup()
         {
-            _uut = new MonitorConsole();
-            _collisionTrack = new CommercialTrack();
-            _observedTrack = new CommercialTrack();
+            _uut = Substitute.For<MonitorConsole>();
+            _collisionTrack = Substitute.For<CommercialTrack>();
+            _observedTrack = Substitute.For<CommercialTrack>();
 
             //Setting properties for testing for FakeTracks: 
             _collisionTrack.Tag = "ATR243";
@@ -46,8 +46,8 @@ namespace Display.Test.Unit
         [Test]
         public void RenderTrack_TrackDoesNotExists_AddTrack()
         {
-            //Clear list
-            _uut.RenderedTracks.RemoveRange(0, _uut.RenderedTracks.Count-1);
+            /*Clear list
+            _uut.RenderedTracks.RemoveRange(0, _uut.RenderedTracks.Count-1); */
 
             //Check to see if track was added 
             _uut.RenderTrack(_observedTrack);
@@ -55,6 +55,7 @@ namespace Display.Test.Unit
 
         }
 
+        [Test]
         public void RenderTrack_PrintAllTracks_AllTracksPrint()
         {
             //Add dummy data
