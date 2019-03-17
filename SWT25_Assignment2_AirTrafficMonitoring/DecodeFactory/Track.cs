@@ -52,6 +52,9 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
             AircraftType = "Commercial";
         }
 
+        /// <summary>
+        /// Prints information about the track
+        /// </summary>
         public override void PrintTrack()
         {
             Console.WriteLine($"Tag: {Tag}");
