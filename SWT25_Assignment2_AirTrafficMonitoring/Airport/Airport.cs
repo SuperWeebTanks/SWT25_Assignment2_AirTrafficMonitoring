@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 
 namespace SWT25_Assignment2_AirTrafficMonitoring.Airport
 {
@@ -20,19 +21,43 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.Airport
         /// <param name="factory"></param>
         /// <param name="forwarder"></param>
         #region Constructors 
-        public Airport(ITransponderReceiver receiver, TransponderReceiverFactory factory,
-            ISignalForwarder forwarder)
+        public Airport(ITransponderReceiver receiver, 
+            ISignalForwarder forwarder, CommercialTrackFactory decode)
         {
+            Decode = decode;
             Receiver = receiver;
-            Factory = factory;
+            Receiver.TransponderDataReady += AirportReceiverHandler;
             Forwarder = forwarder; 
         }
         #endregion
-
         #region Properties
+
+        public CommercialTrackFactory Decode;
         public ITransponderReceiver Receiver { get; private set; }
-        public TransponderReceiverFactory Factory { get; private set; }
         public ISignalForwarder Forwarder { get; private set; }
+ 
+
         #endregion
+
+        public void AirportReceiverHandler(object sender, RawTransponderDataEventArgs e)
+        {
+            var list = Decode.CreateTracks(e.TransponderData);
+           
+            TrackDataEvent?.Invoke(this, new TrackDataEventArgs(list));
+        }
+
+       
+
+        public event EventHandler<TrackDataEventArgs> TrackDataEvent;
+
+
+    }
+    public class TrackDataEventArgs : EventArgs
+    {
+        public TrackDataEventArgs(List<Track> trackData)
+        {
+            TrackData = trackData;
+        }
+        public List<Track> TrackData { get; set; }
     }
 }
