@@ -47,7 +47,7 @@
     <Compile Include="AirTrafficMonitor\Air Traffic Monitor.cs" />
     <Compile Include="AirTrafficMonitor\IDisplay.cs" />
     <Compile Include="AirTrafficMonitor\IOccurenceDetector.cs" />
-    <Compile Include="AirTrafficMonitor\OccurenceLogger.cs" />
+    <Compile Include="AirTrafficMonitor\OccurrenceLogger.cs" />
     <Compile Include="DecodeFactory\DecodeFactory.cs" />
     <Compile Include="DecodeFactory\Track.cs" />
     <Compile Include="Program.cs" />
