@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverApplicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverUser", "Undervisningsmateriale\TransponderReceiverUser\TransponderReceiverUser.csproj", "{AD9E07F6-3D14-47C9-955E-FF20C7FE5433}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverUser.Test.Unit", "Undervisningsmateriale\TransponderReceiverUser.Test.Unit\TransponderReceiverUser.Test.Unit.csproj", "{3F42207F-5BB8-4BB5-9E68-4821FCC4B176}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafficMonitor.Unit.Test", "AirTrafficMonitor.Unit.Test\AirTrafficMonitor.Unit.Test.csproj", "{108E4A4E-AE44-4D50-9033-53435B7D8DB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{AD9E07F6-3D14-47C9-955E-FF20C7FE5433}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD9E07F6-3D14-47C9-955E-FF20C7FE5433}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD9E07F6-3D14-47C9-955E-FF20C7FE5433}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F42207F-5BB8-4BB5-9E68-4821FCC4B176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F42207F-5BB8-4BB5-9E68-4821FCC4B176}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F42207F-5BB8-4BB5-9E68-4821FCC4B176}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F42207F-5BB8-4BB5-9E68-4821FCC4B176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{108E4A4E-AE44-4D50-9033-53435B7D8DB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{108E4A4E-AE44-4D50-9033-53435B7D8DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{108E4A4E-AE44-4D50-9033-53435B7D8DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{108E4A4E-AE44-4D50-9033-53435B7D8DB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
