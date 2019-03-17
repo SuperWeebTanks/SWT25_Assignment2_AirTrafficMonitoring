@@ -43,5 +43,50 @@ namespace Display.Test.Unit
             _observedTrack.TimeStamp = DateTime.Now; 
         }
 
+        [Test]
+        public void RenderTrack_TrackDoesNotExists_AddTrack()
+        {
+            //Clear list
+            _uut.RenderedTracks.RemoveRange(0, _uut.RenderedTracks.Count-1);
+
+            //Check to see if track was added 
+            _uut.RenderTrack(_observedTrack);
+            _uut.RenderedTracks.Received(1).Add(_observedTrack);
+
+        }
+
+        public void RenderTrack_PrintAllTracks_AllTracksPrint()
+        {
+            //Add dummy data
+            _uut.RenderedTracks.Add(_collisionTrack);
+            _uut.RenderedTracks.Add(_observedTrack);
+
+            //Check if all tracks are printed
+            foreach (var track in _uut.RenderedTracks)
+            {
+                track.Received(1).PrintTrack();
+            }
+        }
+
+        [Test]
+        public void RenderTrack_TrackAlreadyExists_UpdateTrack()
+        {
+            //Clear list
+            _uut.RenderedTracks.RemoveRange(0, _uut.RenderedTracks.Count - 1);
+
+            //Add first time
+            _uut.RenderTrack(_observedTrack);
+
+            //Add second time, should update the track 
+            //Change altitude
+            _observedTrack.CurrentPositionX = 3004;
+            //Update track
+            _uut.RenderTrack(_observedTrack); 
+            //Find track 
+            var tempTrack = _uut.RenderedTracks.Find(x => x.Tag.Contains(_observedTrack.Tag)); 
+            //Check if track was updated correctly 
+            Assert.That(_observedTrack.CurrentPositionX, Is.EqualTo(tempTrack.CurrentPositionX));
+            
+        }
     }
 }

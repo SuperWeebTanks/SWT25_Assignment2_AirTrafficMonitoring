@@ -29,15 +29,13 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             var list = e.TrackData;
             foreach (var track in list)
             {
-                var listOfTracksInOccurence=//kald til IOccurence funktion 
+                //var listOfTracksInOccurence= //kald til IOccurence funktion 
 
 
             }
         }
 
-        
-        
-    }
+}
 
     public class Commercial_ATM : Air_Traffic_Monitor
     {

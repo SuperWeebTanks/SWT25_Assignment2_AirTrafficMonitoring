@@ -21,7 +21,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             Console.WriteLine($"POTENTIAL COLLISION BETWEEN AIRCRAFTS: {observedTrack.Tag} and {occurenceTrack.Tag} at {occurenceTime}");
         }
 
-        List<Track> RenderedTracks { get; set; }
+        public List<Track> RenderedTracks { get; set; } = new List<Track>();
         
         public void RenderTrack(Track updatedTrack)
         {

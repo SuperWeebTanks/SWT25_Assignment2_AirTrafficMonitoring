@@ -32,7 +32,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.Airport
         #endregion
         #region Properties
 
-        public CommercialTrackFactory Decode;
+        public CommercialTrackFactory Decode { get; private set; };
         public ITransponderReceiver Receiver { get; private set; }
         public ISignalForwarder Forwarder { get; private set; }
  
@@ -46,12 +46,9 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.Airport
             TrackDataEvent?.Invoke(this, new TrackDataEventArgs(list));
         }
 
-       
+       public event EventHandler<TrackDataEventArgs> TrackDataEvent;
 
-        public event EventHandler<TrackDataEventArgs> TrackDataEvent;
-
-
-    }
+        }
     public class TrackDataEventArgs : EventArgs
     {
         public TrackDataEventArgs(List<Track> trackData)
