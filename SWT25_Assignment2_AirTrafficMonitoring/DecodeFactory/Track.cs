@@ -26,8 +26,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
                     tag = value;
                 else
                 {
-                    Console.WriteLine("Invalid Tag");
-                    return;
+                    throw new ArgumentException("Invalid Tag"); 
                 }
             }
         }

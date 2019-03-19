@@ -27,29 +27,50 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         #region FactoryMethod
         public override List<Track> CreateTracks(List<string> transponderInfo)
         {
-            if (transponderInfo != null)
+            if (transponderInfo.Count > 0)
             {
                 List<Track> commercialTracks = new List<Track>();
-                foreach (var info in transponderInfo)
+
+                try
                 {
-                    string[] properties = info.Split(';');
+                    #region String Conversion Into Track
 
-                    //Missing check if properties contain the correct amount of information
-                    Track c_Track = new CommercialTrack();
-                    c_Track.Tag = properties[0];
-                    c_Track.CurrentPositionX = int.Parse(properties[1]);
-                    c_Track.CurrentPositionY = int.Parse(properties[2]);
-                    c_Track.CurrentAltitude = int.Parse(properties[3]);
-                    c_Track.TimeStamp = new DateTime(int.Parse(properties[4].Substring(0,4)), int.Parse(properties[4].Substring(4,2)),
-                        int.Parse(properties[4].Substring(6, 2)), int.Parse(properties[4].Substring(8, 2)), int.Parse(properties[4].Substring(10, 2))
-                        , int.Parse(properties[4].Substring(12, 2)), int.Parse(properties[4].Substring(14,3)));
+                    foreach (var info in transponderInfo)
+                    {
+                        string[] properties = info.Split(';');
 
-                    commercialTracks.Add(c_Track); 
+                        if (properties.Length == 4)
+                        {
+                            //Missing check if properties contain the correct amount of information
+                            //Perhaps insert try/catch block 
+                            Track c_Track = new CommercialTrack();
+                            c_Track.Tag = properties[0];
+                            c_Track.CurrentPositionX = int.Parse(properties[1]);
+                            c_Track.CurrentPositionY = int.Parse(properties[2]);
+                            c_Track.CurrentAltitude = int.Parse(properties[3]);
+                            c_Track.TimeStamp = new DateTime(int.Parse(properties[4].Substring(0, 4)),
+                                int.Parse(properties[4].Substring(4, 2)),
+                                int.Parse(properties[4].Substring(6, 2)), int.Parse(properties[4].Substring(8, 2)),
+                                int.Parse(properties[4].Substring(10, 2))
+                                , int.Parse(properties[4].Substring(12, 2)), int.Parse(properties[4].Substring(14, 3)));
+
+                            commercialTracks.Add(c_Track);
+                        }
+                        else
+                            throw new ArgumentException("Invalid String");
+                    }
+
+                    #endregion
                 }
-                return commercialTracks; 
+                catch (ArgumentException e) when(e.ParamName == "Invalid Tag")
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+                return commercialTracks;
             }
             else
-                return null; 
+                return null;
         }
         #endregion
     }

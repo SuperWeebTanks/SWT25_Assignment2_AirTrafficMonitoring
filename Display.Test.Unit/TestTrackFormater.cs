@@ -30,7 +30,7 @@ namespace Display.Test.Unit
             _collisionTrack = new CommercialTrack();
             _observedTrack = new CommercialTrack();
             
-            //Setting properties for testing for FakeTracks: 
+            //Setting properties for testing for Tracks: 
             _collisionTrack.Tag = "ATR243";
             _collisionTrack.CurrentPositionX = 39045;
             _collisionTrack.CurrentPositionY = 12932;
