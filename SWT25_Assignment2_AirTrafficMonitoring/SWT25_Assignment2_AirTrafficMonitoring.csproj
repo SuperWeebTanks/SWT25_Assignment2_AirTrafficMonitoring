@@ -46,6 +46,7 @@
     <Compile Include="Airport\ISignalForwarder.cs" />
     <Compile Include="AirTrafficMonitor\Air Traffic Monitor.cs" />
     <Compile Include="AirTrafficMonitor\IDisplay.cs" />
+    <Compile Include="AirTrafficMonitor\IFormat.cs" />
     <Compile Include="AirTrafficMonitor\IOccurenceDetector.cs" />
     <Compile Include="AirTrafficMonitor\OccurrenceLogger.cs" />
     <Compile Include="DecodeFactory\DecodeFactory.cs" />

@@ -9,40 +9,31 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 {
     public interface IDisplay
     {
-        void RenderOccurence(Track observedTrack, Track occurenceTrack, DateTime occurenceTime);
-        void RenderTrack(Track updatedTrack);
+        void RenderOccurences(string[] occurences);
+        void RenderTrack(List<Track> ListOfTracks);
     }
-
+    
     public class MonitorConsole : IDisplay
     {
-        public void RenderOccurence(Track observedTrack, Track occurenceTrack, DateTime occurenceTime)
+        public void RenderOccurences(string[] occurences)
         {
-            Console.WriteLine("WARNING: COLLISION MAY OCCUR!");
-            Console.WriteLine($"POTENTIAL COLLISION BETWEEN AIRCRAFTS: {observedTrack.Tag} and {occurenceTrack.Tag} at {occurenceTime}");
+            foreach (var textline in occurences)
+            {
+                Console.WriteLine(textline);
+            }
         }
 
-        public List<Track> RenderedTracks { get; set; } = new List<Track>();
-        
-        public void RenderTrack(Track updatedTrack)
+        public void RenderTrack(List<Track> ListOfTracks)
         {
-            if (RenderedTracks.Find(x => x.Tag.Contains(updatedTrack.Tag)) != null)
+            foreach (var track in ListOfTracks)
             {
-                var track = RenderedTracks.Find(x => x.Tag.Contains(updatedTrack.Tag));
-                track.CurrentPositionX = updatedTrack.CurrentPositionX;
-                track.CurrentPositionY = updatedTrack.CurrentPositionY;
-                track.CurrentAltitude = updatedTrack.CurrentAltitude;
-                track.CurrentHorizontalVelocity = updatedTrack.CurrentHorizontalVelocity;
-                track.CurrentCompassCourse = updatedTrack.CurrentCompassCourse;
-                track.TimeStamp = updatedTrack.TimeStamp; 
+                Console.WriteLine($"Tag: {track.Tag}");
+                Console.WriteLine($"Current altitude: x:{track.CurrentPositionX.ToString()}, y:{track.CurrentPositionY.ToString()}");
+                Console.WriteLine($"Current altitude (Meters): {track.CurrentAltitude.ToString()}");
+                Console.WriteLine($"Current Horizontal Velocity (m/s): {track.CurrentHorizontalVelocity.ToString()}");
+                Console.WriteLine($"Current Compass Course: {track.CurrentCompassCourse}");
+                Console.WriteLine($"Timestamp: {track.TimeStamp.ToString()}\n");
             }
-            else
-                RenderedTracks.Add(updatedTrack); 
-
-            foreach(var track in RenderedTracks)
-            {
-                track.PrintTrack(); 
-            }
-
         }
     }
 }

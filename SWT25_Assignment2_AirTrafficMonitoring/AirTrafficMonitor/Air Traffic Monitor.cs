@@ -17,14 +17,16 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         public IDisplay Display { get; set; }
         public Airport.Airport Airport { get; set; }
         public OccurrenceLogger Logger { get; set; }
+        public IFormat Formatter { get; set; }
 
-        protected Air_Traffic_Monitor(Airport.Airport airport, IOccurenceDetector detector,IDisplay display, OccurrenceLogger logger)
+        protected Air_Traffic_Monitor(Airport.Airport airport, IOccurenceDetector detector,IDisplay display, OccurrenceLogger logger, IFormat formatter)
         {
             tracks=new List<Track>();
             Airport = airport;
             Display = display;
             Detector = detector;
-            Logger = logger;                    
+            Logger = logger;    
+            Formatter = formatter;
         }
         
         public void Update(Object sender, TrackDataEventArgs e)
@@ -43,8 +45,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         public Track OccurenceTrack { get; set; }
         public DateTime OccurrenceTime { get; set; }
 
-        public Commercial_ATM(Airport.Airport airport, IOccurenceDetector detector, IDisplay display, OccurrenceLogger logger)
-        : base(airport, detector, display, logger)
+        public Commercial_ATM(Airport.Airport airport, IOccurenceDetector detector, IDisplay display, OccurrenceLogger logger, IFormat formatter)
+        : base(airport, detector, display, logger, formatter)
         {
             Airport.TrackDataEvent += Update;
             Detector.OccurenceDetectedEvent += HandleOccurenceEvent;
@@ -57,7 +59,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             OccurenceTrack = e.OccurenceTrack;
             OccurrenceTime = e.OccurenceTime;
 
-            Display.RenderOccurence(ObservedTrack, OccurenceTrack, OccurrenceTime);
+            Display.RenderOccurences(Formatter.FormatOccurence(ObservedTrack, OccurenceTrack, OccurrenceTime));
             
             // Log occurence
             Logger.LogOccurrences(ObservedTrack, OccurenceTrack, OccurrenceTime);

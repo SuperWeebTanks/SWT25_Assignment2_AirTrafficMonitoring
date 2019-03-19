@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverApplicat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverUser", "Undervisningsmateriale\TransponderReceiverUser\TransponderReceiverUser.csproj", "{AD9E07F6-3D14-47C9-955E-FF20C7FE5433}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Display.Test.Unit", "Display.Test.Unit\Display.Test.Unit.csproj", "{30CF057C-B3E3-4DE6-BC36-FF31C278B580}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackFormater.Test.Unit", "Display.Test.Unit\TrackFormater.Test.Unit.csproj", "{30CF057C-B3E3-4DE6-BC36-FF31C278B580}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafficMonitor.Unit.Test", "AirTrafficMonitor.Unit.Test\AirTrafficMonitor.Unit.Test.csproj", "{108E4A4E-AE44-4D50-9033-53435B7D8DB5}"
 EndProject
