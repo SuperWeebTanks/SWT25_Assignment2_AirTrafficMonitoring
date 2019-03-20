@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
 {
-    public abstract class DecodeFactory
+    public interface DecodeFactory
     {
         /// <summary>
         /// Abstract Factory Class 
@@ -14,10 +14,10 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         /// <param name="transponderInfo"></param>
         /// <param name="time"></param>
         /// <returns>A list of Tracks</returns>
-        public abstract List<Track> CreateTracks(List<string> transponderInfo);
+         List<Track> CreateTracks(List<string> transponderInfo);
     }
 
-    public class CommercialTrackFactory : DecodeFactory
+    public class TrackFactory : DecodeFactory
     {
         /// <summary>
         /// Factorymethod for Commercial Aircraft Tracks
@@ -25,7 +25,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         /// <param name="transponderInfo"></param>
         /// <returns>A list of CommercialTracks</returns>
         #region FactoryMethod
-        public override List<Track> CreateTracks(List<string> transponderInfo)
+        public List<Track> CreateTracks(List<string> transponderInfo)
         {
             if (transponderInfo.Count > 0)
             {
@@ -43,7 +43,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
                         {
                             //Missing check if properties contain the correct amount of information
                             //Perhaps insert try/catch block 
-                            Track c_Track = new CommercialTrack();
+                            Track c_Track = new Track();
                             c_Track.Tag = properties[0];
                             c_Track.CurrentPositionX = int.Parse(properties[1]);
                             c_Track.CurrentPositionY = int.Parse(properties[2]);

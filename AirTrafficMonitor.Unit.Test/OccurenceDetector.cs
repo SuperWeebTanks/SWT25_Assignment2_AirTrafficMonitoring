@@ -23,8 +23,8 @@ namespace AirTrafficMonitor.Unit.Test
             {
                 _receivedOccurenceEventArgs = null;
                 _uut = new Commercial_OD();
-                _observedTrack = new CommercialTrack();
-                _occurenceTrack = new CommercialTrack();
+                _observedTrack = new Track();
+                _occurenceTrack = new Track();
                 _occurenceTracks = new List<Track>();
 
                 _uut.OccurenceDetectedEvent +=

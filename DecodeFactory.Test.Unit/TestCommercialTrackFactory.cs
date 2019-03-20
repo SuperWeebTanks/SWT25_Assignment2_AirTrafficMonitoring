@@ -21,13 +21,13 @@ namespace DecodeFactory.Test.Unit
         [SetUp]
         public void Setup()
         {
-            _uut = new CommercialTrackFactory();
+            _uut = new TrackFactory();
             TrackString1 = "BTR312;2004;18204;5500;20151006213456789";
             ListOfStrings = new List<string>
             {
                 TrackString1
             };
-            TestTrack = new CommercialTrack();
+            TestTrack = new Track();
 
             //String values converted to Track values
             TestTrack.Tag = "BTR312";
@@ -40,15 +40,20 @@ namespace DecodeFactory.Test.Unit
         }
 
         [Test]
-        [Ignore("Not ready yet")]
         public void CreateTracks_ReceiveStringConvertToTrack_ReturnsTrack()
         {
+            //Arrange
+            bool TracksAreTheSame; 
+
             //Act - Send 2 strings to be created as tracks 
             var ListOfTracks = _uut.CreateTracks(ListOfStrings);
             var Track = ListOfTracks.Find((x) => x.Tag.Contains("BTR312"));
 
-            //Assert
-            Assert.That(Track, Is.EqualTo(TestTrack)); 
+            //Uses overloaded == operation
+            TracksAreTheSame = TestTrack == Track; 
+
+            //Assert 
+            Assert.That(TracksAreTheSame, Is.EqualTo(true));
 
         }
 

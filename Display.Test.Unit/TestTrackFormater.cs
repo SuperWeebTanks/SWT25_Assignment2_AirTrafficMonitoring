@@ -16,8 +16,8 @@ namespace Display.Test.Unit
     {
         #region Properties
         private TrackFormater _uut { get; set; }
-        private CommercialTrack _collisionTrack { get; set; }
-        private CommercialTrack _observedTrack { get; set; }
+        private Track _collisionTrack { get; set; }
+        private Track _observedTrack { get; set; }
 
         //Strings to test: 
         private string TrackRenderString { get; set; }
@@ -27,8 +27,8 @@ namespace Display.Test.Unit
         public void Setup()
         {
             _uut = new TrackFormater();
-            _collisionTrack = new CommercialTrack();
-            _observedTrack = new CommercialTrack();
+            _collisionTrack = new Track();
+            _observedTrack = new Track();
             
             //Setting properties for testing for Tracks: 
             _collisionTrack.Tag = "ATR243";

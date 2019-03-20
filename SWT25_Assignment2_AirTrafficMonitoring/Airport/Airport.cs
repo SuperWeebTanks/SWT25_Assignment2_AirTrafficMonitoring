@@ -22,7 +22,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.Airport
         /// <param name="forwarder"></param>
         #region Constructors 
         public Airport(ITransponderReceiver receiver, 
-            ISignalForwarder forwarder, CommercialTrackFactory decode)
+            ISignalForwarder forwarder, TrackFactory decode)
         {
             Decode = decode;
             Receiver = receiver;
@@ -32,7 +32,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.Airport
         #endregion
         #region Properties
 
-        public CommercialTrackFactory Decode { get; private set; }
+        public TrackFactory Decode { get; private set; }
         public ITransponderReceiver Receiver { get; private set; }
         public ISignalForwarder Forwarder { get; private set; }
  

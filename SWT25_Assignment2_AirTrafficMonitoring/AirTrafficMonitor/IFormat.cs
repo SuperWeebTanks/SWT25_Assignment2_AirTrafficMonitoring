@@ -1,4 +1,5 @@
-﻿using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
+﻿using SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor;
+using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
                 track.CurrentAltitude = updatedTrack.CurrentAltitude;
 
                 //Update these, compare to previous location 
-                track.CurrentHorizontalVelocity = updatedTrack.CurrentHorizontalVelocity;
+                track.CurrentHorizontalVelocity = Calculator.CalculateHorizontalVelocity(updatedTrack, track); 
+
                 track.CurrentCompassCourse = updatedTrack.CurrentCompassCourse;
 
                 track.TimeStamp = updatedTrack.TimeStamp;

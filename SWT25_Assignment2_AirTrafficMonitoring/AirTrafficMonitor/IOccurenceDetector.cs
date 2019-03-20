@@ -27,11 +27,6 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         private double _altitudeDistance;
         private double _horizontalDistance;
 
-        public double CalculateHorizontalDistance(Track track1, Track track2)
-        {
-            return Math.Sqrt(Math.Pow((track2.CurrentPositionX - track1.CurrentPositionX), 2) +
-                             Math.Pow((track2.CurrentPositionY - track1.CurrentPositionY), 2));
-        }
 
         public void CheckOccurrence(Track track, List<Track> tracks)
         {
@@ -40,7 +35,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
                 _altitudeDistance = (track.CurrentAltitude - t.CurrentAltitude > 0) ?
                     (track.CurrentAltitude - t.CurrentAltitude) : (t.CurrentAltitude - track.CurrentAltitude);
 
-                _horizontalDistance = CalculateHorizontalDistance(track, t);
+                _horizontalDistance = Calculator.CalculateHorizontalDistance(track, t);
 
                 if ((_altitudeDistance < 300) && (_horizontalDistance < 5000))
                     OnOccurenceDetectedEvent(new OccurrenceEventArgs { ObservedTrack = track, OccurenceTrack = t, OccurenceTime = DateTime.Now});
