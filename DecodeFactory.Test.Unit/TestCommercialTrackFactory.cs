@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NSubstitute;
 using NUnit.Framework;
 using SWT25_Assignment2_AirTrafficMonitoring;
 using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
@@ -14,7 +15,7 @@ namespace DecodeFactory.Test.Unit
     {
         private SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory.DecodeFactory _uut;
         private string TrackString1;
-        private string TrackString2;
+        private Track TestTrack; 
         private List<string> ListOfStrings;
 
         [SetUp]
@@ -22,22 +23,32 @@ namespace DecodeFactory.Test.Unit
         {
             _uut = new CommercialTrackFactory();
             TrackString1 = "BTR312;2004;18204;5500;20151006213456789";
-            TrackString2 = "AQM312;3200;18602;5500;20151006213456789";
             ListOfStrings = new List<string>
             {
-                TrackString1,
-                TrackString2
+                TrackString1
             };
+            TestTrack = new CommercialTrack();
+
+            //String values converted to Track values
+            TestTrack.Tag = "BTR312";
+            TestTrack.CurrentPositionX = 2004;
+            TestTrack.CurrentPositionY = 18204;
+            TestTrack.CurrentAltitude = 5500;
+            TestTrack.TimeStamp = new DateTime(2015, 10, 06, 21, 34, 56);
+
+
         }
 
         [Test]
-        [Ignore("Not Implmented yet")]
+        [Ignore("Not ready yet")]
         public void CreateTracks_ReceiveStringConvertToTrack_ReturnsTrack()
         {
-            //Act
-            var track = _uut.CreateTracks(ListOfStrings);
+            //Act - Send 2 strings to be created as tracks 
+            var ListOfTracks = _uut.CreateTracks(ListOfStrings);
+            var Track = ListOfTracks.Find((x) => x.Tag.Contains("BTR312"));
 
             //Assert
+            Assert.That(Track, Is.EqualTo(TestTrack)); 
 
         }
 

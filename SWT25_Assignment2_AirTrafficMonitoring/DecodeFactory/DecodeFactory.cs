@@ -39,7 +39,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
                     {
                         string[] properties = info.Split(';');
 
-                        if (properties.Length == 4)
+                        if (properties.Length == 5)
                         {
                             //Missing check if properties contain the correct amount of information
                             //Perhaps insert try/catch block 
@@ -52,7 +52,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
                                 int.Parse(properties[4].Substring(4, 2)),
                                 int.Parse(properties[4].Substring(6, 2)), int.Parse(properties[4].Substring(8, 2)),
                                 int.Parse(properties[4].Substring(10, 2))
-                                , int.Parse(properties[4].Substring(12, 2)), int.Parse(properties[4].Substring(14, 3)));
+                                , int.Parse(properties[4].Substring(12, 2)));
 
                             commercialTracks.Add(c_Track);
                         }
