@@ -38,8 +38,11 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
                 track.CurrentPositionX = updatedTrack.CurrentPositionX;
                 track.CurrentPositionY = updatedTrack.CurrentPositionY;
                 track.CurrentAltitude = updatedTrack.CurrentAltitude;
+
+                //Update these, compare to previous location 
                 track.CurrentHorizontalVelocity = updatedTrack.CurrentHorizontalVelocity;
                 track.CurrentCompassCourse = updatedTrack.CurrentCompassCourse;
+
                 track.TimeStamp = updatedTrack.TimeStamp;
             }
             //Track does not exist, therefore it must be rendered as a new track

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#pragma warning disable CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
 namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
 {
     public abstract class Track
@@ -48,7 +49,39 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         public CommercialTrack()
         {
             AircraftType = "Commercial";
+            CurrentHorizontalVelocity = 0;
+            CurrentCompassCourse = 0; 
         }
         #endregion
+
+        #region Overloads
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public static bool operator ==(CommercialTrack obj1, CommercialTrack obj2)
+        {
+            return (obj1.Tag == obj2.Tag && obj1.CurrentPositionX == obj2.CurrentPositionX
+                                         && obj1.CurrentAltitude == obj2.CurrentAltitude &&
+                                         obj1.CurrentPositionY == obj2.CurrentPositionY
+                                         && obj1.TimeStamp == obj2.TimeStamp &&
+                                         obj1.CurrentCompassCourse == obj2.CurrentCompassCourse &&
+                                         obj1.CurrentHorizontalVelocity == obj2.CurrentHorizontalVelocity); 
+        }
+
+        public static bool operator !=(CommercialTrack obj1, CommercialTrack obj2)
+        {
+            return (obj1.Tag != obj2.Tag || obj1.CurrentPositionX != obj2.CurrentPositionX
+                                         || obj1.CurrentAltitude != obj2.CurrentAltitude ||
+                                         obj1.CurrentPositionY != obj2.CurrentPositionY
+                                         || obj1.TimeStamp != obj2.TimeStamp ||
+                                         obj1.CurrentCompassCourse != obj2.CurrentCompassCourse ||
+                                         obj1.CurrentHorizontalVelocity != obj2.CurrentHorizontalVelocity);
+        }
+
+        #endregion
+
     }
 }
+
