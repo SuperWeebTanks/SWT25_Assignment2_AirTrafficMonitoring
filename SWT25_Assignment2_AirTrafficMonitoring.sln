@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransponderReceiverUser", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackFormater.Test.Unit", "Display.Test.Unit\TrackFormater.Test.Unit.csproj", "{30CF057C-B3E3-4DE6-BC36-FF31C278B580}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafficMonitor.Unit.Test", "AirTrafficMonitor.Unit.Test\AirTrafficMonitor.Unit.Test.csproj", "{108E4A4E-AE44-4D50-9033-53435B7D8DB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OccurrenceDetector.Unit.Test", "AirTrafficMonitor.Unit.Test\OccurrenceDetector.Unit.Test.csproj", "{108E4A4E-AE44-4D50-9033-53435B7D8DB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecodeFactory.Test.Unit", "DecodeFactory.Test.Unit\DecodeFactory.Test.Unit.csproj", "{1CC1ECA3-FF0E-4B71-8E57-A4209644A292}"
 EndProject
