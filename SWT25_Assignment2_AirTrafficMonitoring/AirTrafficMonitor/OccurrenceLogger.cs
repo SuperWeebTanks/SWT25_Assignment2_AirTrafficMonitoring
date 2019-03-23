@@ -8,7 +8,13 @@ using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 
 namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 {
-    public class OccurrenceLogger
+    public interface IOccurrenceLogger
+    {
+        void LogOccurrences(Track observedTrack, Track occurenceTrack, DateTime time);
+        void ClearLog();
+    }
+
+    public class OccurrenceLogger : IOccurrenceLogger
     {
         public OccurrenceLogger()
         {
