@@ -29,8 +29,12 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         /// <returns>Horizontal Velocity in meters per second </returns>
         public static double CalculateHorizontalVelocity(Track updatedTrack, Track oldTrack)
         {
-            return (CalculateHorizontalDistance(oldTrack, updatedTrack) /
-                  (updatedTrack.TimeStamp - oldTrack.TimeStamp).TotalSeconds);
+            var timeDiffence = (updatedTrack.TimeStamp - oldTrack.TimeStamp).TotalSeconds;
+            if (CalculateHorizontalDistance(oldTrack, updatedTrack) > 0 && timeDiffence > 0)
+                return (CalculateHorizontalDistance(oldTrack, updatedTrack) /
+                        (updatedTrack.TimeStamp - oldTrack.TimeStamp).TotalSeconds);
+            else
+                return 0; 
         }
         
         /// <summary>
@@ -44,34 +48,33 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             double x = updatedTrack.CurrentPositionX - oldTrack.CurrentPositionX;
             double y = updatedTrack.CurrentPositionY - oldTrack.CurrentPositionY;
 
-            double angle = Math.Tanh(y / x);
-
-            if (y / x > 0)
+            if (x != 0 || y != 0)
             {
-                if (x > 0)
-                {
+                double angle = Math.Atan(y / x) * 180 / Math.PI;
 
-                }
-                else
+                if (x < 0 && y > 0 || x < 0 && y < 0)
                 {
                     angle += 180;
                 }
-
-            }
-            else if (y/x<0)
-            {
-                if (x > 0)
+                else if (x > 0 && y < 0)
+                {
+                    angle = -angle;
+                    angle += 270;
+                }
+                else if (x == 0 && y < 0)
                 {
                     angle += 360;
                 }
-                else
+                else if (x < 0 && y == 0)
                 {
-                    angle -=180;
+                    angle += 180; 
                 }
-                angle += 180; 
+                return angle;
             }
-
-            return 0; 
+            else
+            {
+                return 0;
+            }
         }
     }
 }

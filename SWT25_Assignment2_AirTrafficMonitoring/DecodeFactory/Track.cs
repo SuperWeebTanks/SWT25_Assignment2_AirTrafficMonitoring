@@ -16,12 +16,10 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
 
         #region Properties
 
-        protected string AircraftType { get; set; }
+        public virtual int CurrentPositionX { get; set; } = 0;
+        public virtual int CurrentPositionY { get; set; } = 0;
 
-        public virtual int CurrentPositionX { get; set; }
-        public virtual int CurrentPositionY { get; set; }
-
-        private string tag;
+        private string tag = "";
 
         public string Tag
         {
@@ -37,9 +35,9 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
             }
         }
 
-        public double CurrentHorizontalVelocity { get; set; }
+        public double CurrentHorizontalVelocity { get; set; } = 0;
 
-        private int currentAltitude;
+        private int currentAltitude = 0;
 
         public int CurrentAltitude
         {
@@ -57,7 +55,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
             }
         }
 
-        private int compassCourse;
+        private int compassCourse = 0;
 
         public int CurrentCompassCourse
         {
