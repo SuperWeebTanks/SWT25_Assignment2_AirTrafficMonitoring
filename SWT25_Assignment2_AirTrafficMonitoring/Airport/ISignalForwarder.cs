@@ -8,5 +8,6 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.Airport
 {
     public interface ISignalForwarder
     {
+        event EventHandler<TrackDataEventArgs> TrackDataEvent;
     }
 }

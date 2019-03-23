@@ -15,11 +15,15 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         private List<Track> tracks;
         public IOccurenceDetector Detector { get; set; }
         public IDisplay Display { get; set; }
-        public Airport.Airport Airport { get; set; }
-        public OccurrenceLogger Logger { get; set; }
+        public ISignalForwarder Airport { get; set; }
+        public IOccurrenceLogger Logger { get; set; }
         public IFormat Formatter { get; set; }
 
-        protected Air_Traffic_Monitor(Airport.Airport airport, IOccurenceDetector detector,IDisplay display, OccurrenceLogger logger, IFormat formatter)
+        public Track ObservedTrack { get; set; }
+        public Track OccurenceTrack { get; set; }
+        public DateTime OccurrenceTime { get; set; }
+
+        public Air_Traffic_Monitor(ISignalForwarder airport, IOccurenceDetector detector,IDisplay display, IOccurrenceLogger logger, IFormat formatter)
         {
             tracks=new List<Track>();
             Airport = airport;
@@ -41,11 +45,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 
     public class Commercial_ATM : Air_Traffic_Monitor
     {
-        public Track ObservedTrack { get; set; }
-        public Track OccurenceTrack { get; set; }
-        public DateTime OccurrenceTime { get; set; }
-
-        public Commercial_ATM(Airport.Airport airport, IOccurenceDetector detector, IDisplay display, OccurrenceLogger logger, IFormat formatter)
+        public Commercial_ATM(ISignalForwarder airport, IOccurenceDetector detector, IDisplay display, IOccurrenceLogger logger, IFormat formatter)
         : base(airport, detector, display, logger, formatter)
         {
             Airport.TrackDataEvent += Update;

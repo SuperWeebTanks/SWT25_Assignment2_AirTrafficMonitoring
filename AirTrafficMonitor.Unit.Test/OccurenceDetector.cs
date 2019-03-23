@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using NSubstitute;
-using OccurrenceDetector.Test.Unit;
 using SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor;
 using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 
@@ -24,8 +23,8 @@ namespace OccurrenceDetector.Unit.Test
             {
                 _receivedOccurenceEventArgs = null;
                 _uut = new Commercial_OD();
-                _observedTrack = new FakeTrack();
-                _occurenceTrack = new FakeTrack();
+                _observedTrack = new  Track();
+                _occurenceTrack = new Track();
                 _occurenceTracks = new List<Track>();
 
                 _observedTrack.Tag = "Track1";
@@ -58,6 +57,32 @@ namespace OccurrenceDetector.Unit.Test
                 _occurenceTrack.CurrentAltitude = 18000;
                 _occurenceTrack.CurrentPositionX = 32000;
                 _occurenceTrack.CurrentPositionY = 72000;
+                _occurenceTracks.Add(_occurenceTrack);
+
+                _uut.CheckOccurrence(_observedTrack, _occurenceTracks);
+
+                Assert.That(_receivedOccurenceEventArgs, Is.Null);
+            }
+
+            [Test]
+            public void OccurenceDetector_SameXandYDifferentAltitude_EventNotFired()
+            {
+                _occurenceTrack.CurrentAltitude = 18000;
+                _occurenceTrack.CurrentPositionX = 5000;
+                _occurenceTrack.CurrentPositionY = 5000;
+                _occurenceTracks.Add(_occurenceTrack);
+
+                _uut.CheckOccurrence(_observedTrack, _occurenceTracks);
+
+                Assert.That(_receivedOccurenceEventArgs, Is.Null);
+            }
+
+            [Test]
+            public void OccurenceDetector_DifferentXandYSameAltitude_EventNotFired()
+            {
+                _occurenceTrack.CurrentAltitude = 1000;
+                _occurenceTrack.CurrentPositionX = 80000;
+                _occurenceTrack.CurrentPositionY = 31500;
                 _occurenceTracks.Add(_occurenceTrack);
 
                 _uut.CheckOccurrence(_observedTrack, _occurenceTracks);
