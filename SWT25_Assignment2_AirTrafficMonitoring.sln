@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Display.Test.Unit", "Displa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTrafficMonitor.Unit.Test", "AirTrafficMonitor.Unit.Test\AirTrafficMonitor.Unit.Test.csproj", "{108E4A4E-AE44-4D50-9033-53435B7D8DB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{06560F20-EA46-472C-9129-66DDFF3D8DA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{108E4A4E-AE44-4D50-9033-53435B7D8DB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{108E4A4E-AE44-4D50-9033-53435B7D8DB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{108E4A4E-AE44-4D50-9033-53435B7D8DB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06560F20-EA46-472C-9129-66DDFF3D8DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06560F20-EA46-472C-9129-66DDFF3D8DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06560F20-EA46-472C-9129-66DDFF3D8DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06560F20-EA46-472C-9129-66DDFF3D8DA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

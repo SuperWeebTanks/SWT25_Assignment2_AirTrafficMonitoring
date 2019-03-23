@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SWT25_Assignment2_AirTrafficMonitoring.Airport;
+using SWT25_Assignment2_AirTrafficMonitoring;
 using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 
 
@@ -15,10 +15,10 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         private List<Track> tracks;
         public IOccurenceDetector Detector { get; set; }
         public IDisplay Display { get; set; }
-        public Airport.Airport Airport { get; set; }
+        public Airport Airport { get; set; }
         public OccurrenceLogger Logger { get; set; }
 
-        protected Air_Traffic_Monitor(Airport.Airport airport, IOccurenceDetector detector,IDisplay display, OccurrenceLogger logger)
+        protected Air_Traffic_Monitor(Airport airport, IOccurenceDetector detector,IDisplay display, OccurrenceLogger logger)
         {
             tracks=new List<Track>();
             Airport = airport;
@@ -43,7 +43,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         public Track OccurenceTrack { get; set; }
         public DateTime OccurrenceTime { get; set; }
 
-        public Commercial_ATM(Airport.Airport airport, IOccurenceDetector detector, IDisplay display, OccurrenceLogger logger)
+        public Commercial_ATM(Airport airport, IOccurenceDetector detector, IDisplay display, OccurrenceLogger logger)
         : base(airport, detector, display, logger)
         {
             Airport.TrackDataEvent += Update;
