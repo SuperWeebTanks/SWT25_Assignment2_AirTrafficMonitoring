@@ -16,7 +16,7 @@ namespace AirTrafficMonitor.Unit.Test
     {
         private Air_Traffic_Monitor _uut;
         private IOccurenceDetector _occurenceSource;
-        private Airport _airport;
+        private SWT25_Assignment2_AirTrafficMonitoring.Airport _airport;
         private IDisplay _display;
         private IOccurrenceLogger _logger;
         private IFormat _formatter;
