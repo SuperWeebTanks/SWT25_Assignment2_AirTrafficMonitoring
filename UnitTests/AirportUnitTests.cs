@@ -18,7 +18,7 @@ namespace Airport.Unit.Tests
     public class AirportUnitTests
     {
         private SWT25_Assignment2_AirTrafficMonitoring.Airport _airport;
-        private DecodeFactory _decoderMock;
+        private SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory.DecodeFactory _decoderMock;
         private ITransponderReceiver _transponderReceiverMock;
         private AirSpace _airspace;
         private List<Track> _tracks;
@@ -29,7 +29,7 @@ namespace Airport.Unit.Tests
         public void Setup()
         {
             _airspace = new AirSpace {Height_from = 500, Height_to = 20000, X = 80000, Y = 80000};
-            _decoderMock = Substitute.For<DecodeFactory>();
+            _decoderMock = Substitute.For<SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory.DecodeFactory>();
             _transponderReceiverMock = Substitute.For<ITransponderReceiver>();
             _airport=new SWT25_Assignment2_AirTrafficMonitoring.Airport(_transponderReceiverMock,_decoderMock,_airspace);
             _track = new Track
