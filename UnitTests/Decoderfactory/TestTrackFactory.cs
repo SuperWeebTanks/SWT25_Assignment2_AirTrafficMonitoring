@@ -11,7 +11,7 @@ using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 namespace DecodeFactory.Test.Unit
 {
     [TestFixture]
-    public class TestCommercialTrackFactory
+    public class TestTrackFactory
     {
         private SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory.DecodeFactory _uut;
         private string TrackString1;
