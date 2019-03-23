@@ -40,6 +40,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         public double CurrentHorizontalVelocity { get; set; }
 
         private int currentAltitude;
+
         public int CurrentAltitude
         {
             get { return currentAltitude; }

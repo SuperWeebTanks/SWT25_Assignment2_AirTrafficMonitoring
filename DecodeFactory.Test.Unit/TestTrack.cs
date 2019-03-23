@@ -45,8 +45,8 @@ namespace DecodeFactory.Test.Unit
             TestTrack3.CurrentPositionX = 1000;
             TestTrack3.CurrentPositionY = 3000;
             TestTrack3.CurrentAltitude = 1000;
-            TestTrack3.TimeStamp = DateTime.Now;
-            
+            TestTrack3.TimeStamp = TestTrack1.TimeStamp;
+
             #endregion
         }
 
@@ -122,6 +122,7 @@ namespace DecodeFactory.Test.Unit
             Assert.That(result, Is.EqualTo(true));
         }
 
+        [Test]
         public void OverloadedEqualOperator_TracksAreNotEqual_ReturnsTrue()
         {
             //Arrange 
@@ -147,6 +148,7 @@ namespace DecodeFactory.Test.Unit
             Assert.That(result, Is.EqualTo(true));
         }
 
+        [Test]
         public void OverloadedNotEqualOperator_TracksAreEqual_ReturnsFalse()
         {
             //Arrange 

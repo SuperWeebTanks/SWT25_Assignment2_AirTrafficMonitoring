@@ -32,7 +32,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
         public void FormatTracks(Track updatedTrack, List<Track> ListOfTracks)
         {
             //Check to see if track already exists in list of tracks
-            if (ListOfTracks.Find(x => x.Tag.Contains(updatedTrack.Tag)) != null)
+            if (ListOfTracks.Contains(updatedTrack))
             {
                 var track = ListOfTracks.Find(x => x.Tag.Contains(updatedTrack.Tag));
                 //Update all properties for that track
