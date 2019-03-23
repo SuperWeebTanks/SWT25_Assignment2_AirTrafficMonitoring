@@ -5,7 +5,7 @@ using NSubstitute;
 using NSubstitute.ReturnsExtensions;
 using NUnit.Framework;
 using SWT25_Assignment2_AirTrafficMonitoring;
-using SWT25_Assignment2_AirTrafficMonitoring.Airport;
+
 using SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor;
 using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 
@@ -16,7 +16,7 @@ namespace AirTrafficMonitor.Unit.Test
     {
         private Air_Traffic_Monitor _uut;
         private IOccurenceDetector _occurenceSource;
-        private ISignalForwarder _airPort;
+        private Airport _airport;
         private IDisplay _display;
         private IOccurrenceLogger _logger;
         private IFormat _formatter;
@@ -28,7 +28,7 @@ namespace AirTrafficMonitor.Unit.Test
         public void Setup()
         {
             _occurenceSource = Substitute.For<IOccurenceDetector>();
-            _airPort = Substitute.For<ISignalForwarder>();
+            
             _display = Substitute.For<IDisplay>();
             _logger = Substitute.For<IOccurrenceLogger>();
             _formatter = Substitute.For<IFormat>();
@@ -47,7 +47,7 @@ namespace AirTrafficMonitor.Unit.Test
             _occurenceTrack.CurrentPositionX = 7600;
             _occurenceTrack.CurrentPositionY = 7600;
 
-            _uut = new Commercial_ATM(_airPort, _occurenceSource, _display, _logger, _formatter);
+            _uut = new Commercial_ATM(_airport, _occurenceSource, _display,_logger, _formatter);
         }
 
         [Test]

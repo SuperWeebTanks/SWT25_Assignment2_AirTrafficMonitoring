@@ -32,7 +32,7 @@ namespace Airport.Unit.Tests
             _decoderMock = Substitute.For<DecodeFactory>();
             _transponderReceiverMock = Substitute.For<ITransponderReceiver>();
             _airport=new SWT25_Assignment2_AirTrafficMonitoring.Airport(_transponderReceiverMock,_decoderMock,_airspace);
-            _track = new CommercialTrack
+            _track = new Track
             {
                 CurrentAltitude = 600,
                 CurrentCompassCourse = 200,
@@ -178,14 +178,14 @@ namespace Airport.Unit.Tests
         [Test]
         public void ConstructorBuilderTest()
         {
-            var track = new CommercialTrack
+            var track = new Track
             {
                 CurrentAltitude = 600, CurrentCompassCourse = 200, CurrentHorizontalVelocity = 300,
                 CurrentPositionX = 10000, CurrentPositionY = 10000,
                 Tag="aaaaaa",
                 TimeStamp = new DateTime(2020, 10, 10),
             };
-            var track1 = new CommercialTrack
+            var track1 = new Track
             {
                 CurrentAltitude = 800,
                 CurrentCompassCourse = 300,
