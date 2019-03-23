@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AirportUnitTests.cs" />
+    <Compile Include="Calculator\TestCalculator.cs" />
     <Compile Include="Decoderfactory\TestCommercialTrackFactory.cs" />
     <Compile Include="Decoderfactory\TestTrack.cs" />
     <Compile Include="OccurenceDetector\AirTrafficMonitor.cs" />
