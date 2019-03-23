@@ -4,19 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#pragma warning disable CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
 namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
 {
-    public abstract class Track
+    public class Track
     {
         /// <summary>
         /// Properties for a track - based on the information 
         /// received by the transponder.
         /// </summary>
+
         #region Properties
+
         protected string AircraftType { get; set; }
-        public int CurrentPositionX { get; set; }
-        public int CurrentPositionY { get; set; }
+
+        public virtual int CurrentPositionX { get; set; }
+        public virtual int CurrentPositionY { get; set; }
+
         private string tag;
+
         public string Tag
         {
             get { return tag; }
@@ -26,45 +32,78 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
                     tag = value;
                 else
                 {
-                    Console.WriteLine("Invalid Tag");
-                    return;
+                    throw new ArgumentException("Invalid Tag");
                 }
             }
         }
-        public int CurrentHorizontalVelocity { get; set; }        
-        public int CurrentAltitude { get; set; }
-        //Not sure if this needs restrictions. 
-        public int CurrentCompassCourse { get; set; }
+
+        public double CurrentHorizontalVelocity { get; set; }
+
+        private int currentAltitude;
+
+        public int CurrentAltitude
+        {
+            get { return currentAltitude; }
+            set
+            {
+                if (value >= 0)
+                {
+                    currentAltitude = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid Altitude");
+                }
+            }
+        }
+
+        private int compassCourse;
+
+        public int CurrentCompassCourse
+        {
+            get { return compassCourse; }
+            set
+            {
+                if (value >= 0 && value <= 360)
+                {
+                    compassCourse = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid Compass Course");
+                }
+            }
+        }
+
         public DateTime TimeStamp { get; set; }
         #endregion
-        public abstract void PrintTrack();
-    }
-
-    public class CommercialTrack : Track
-    {
-        /// <summary>
-        /// Adds nothing new to track, simple states the AircraftType
-        /// and sets the properties in the constructor. 
-        /// </summary>
-        #region Constructors
-        public CommercialTrack()
+        
+        #region Overloads == & != 
+        public override int GetHashCode()
         {
-            AircraftType = "Commercial";
+            return base.GetHashCode();
         }
 
-        /// <summary>
-        /// Prints information about the track
-        /// </summary>
-        public override void PrintTrack()
+        public static bool operator ==(Track obj1, Track obj2)
         {
-            Console.WriteLine($"Tag: {Tag}");
-            Console.WriteLine($"Current altitude: x:{CurrentPositionX.ToString()}, y:{CurrentPositionY.ToString()}");
-            Console.WriteLine($"Current altitude (Meters): {CurrentAltitude.ToString()}");
-            Console.WriteLine($"Current Horizontal Velocity (m/s): {CurrentHorizontalVelocity.ToString()}");
-            Console.WriteLine($"Current Compass Course: {CurrentCompassCourse}");
-            Console.WriteLine($"Timestamp: {TimeStamp.ToString()}\n");
+            return (obj1.Tag == obj2.Tag && obj1.CurrentPositionX == obj2.CurrentPositionX
+                                         && obj1.CurrentAltitude == obj2.CurrentAltitude &&
+                                         obj1.CurrentPositionY == obj2.CurrentPositionY
+                                         && obj1.TimeStamp == obj2.TimeStamp &&
+                                         obj1.CurrentCompassCourse == obj2.CurrentCompassCourse &&
+                                         obj1.CurrentHorizontalVelocity == obj2.CurrentHorizontalVelocity);
         }
 
+        public static bool operator !=(Track obj1, Track obj2)
+        {
+            return (obj1.Tag != obj2.Tag || obj1.CurrentPositionX != obj2.CurrentPositionX
+                                         || obj1.CurrentAltitude != obj2.CurrentAltitude ||
+                                         obj1.CurrentPositionY != obj2.CurrentPositionY
+                                         || obj1.TimeStamp != obj2.TimeStamp ||
+                                         obj1.CurrentCompassCourse != obj2.CurrentCompassCourse ||
+                                         obj1.CurrentHorizontalVelocity != obj2.CurrentHorizontalVelocity);
+        }
         #endregion
     }
 }
+

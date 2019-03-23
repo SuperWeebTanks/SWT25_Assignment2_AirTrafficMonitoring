@@ -24,7 +24,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             Airport = airport;
             Display = display;
             Detector = detector;
-            Logger = logger;                    
+            Logger = logger;    
+            Formatter = formatter;
         }
         
         public void Update(Object sender, TrackDataEventArgs e)
@@ -57,7 +58,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             OccurenceTrack = e.OccurenceTrack;
             OccurrenceTime = e.OccurenceTime;
 
-            Display.RenderOccurence(ObservedTrack, OccurenceTrack, OccurrenceTime);
+            Display.RenderOccurences(Formatter.FormatOccurence(ObservedTrack, OccurenceTrack, OccurrenceTime));
             
             // Log occurence
             Logger.LogOccurrences(ObservedTrack, OccurenceTrack, OccurrenceTime);

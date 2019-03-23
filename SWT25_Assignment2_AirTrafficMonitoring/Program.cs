@@ -20,7 +20,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
                 "BTR312;4200;18802;5500;20151006213456789"
             };
 
-            var factory = new CommercialTrackFactory();
+            var factory = new TrackFactory();
             var tracks = factory.CreateTracks(Aircrafts); 
             
             foreach(var track in tracks)
