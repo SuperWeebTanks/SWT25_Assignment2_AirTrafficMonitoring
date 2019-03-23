@@ -41,9 +41,9 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
                 track.CurrentAltitude = updatedTrack.CurrentAltitude;
 
                 //Update these, compare to previous location 
-                track.CurrentHorizontalVelocity = Calculator.CalculateHorizontalVelocity(updatedTrack, track); 
+                track.CurrentHorizontalVelocity = Calculator.CalculateHorizontalVelocity(updatedTrack, track);
 
-                track.CurrentCompassCourse = updatedTrack.CurrentCompassCourse;
+                track.CurrentCompassCourse = (int)Calculator.CalculateCompassCourse(updatedTrack, track); 
 
                 track.TimeStamp = updatedTrack.TimeStamp;
             }
