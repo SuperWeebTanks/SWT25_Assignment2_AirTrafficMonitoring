@@ -23,19 +23,19 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 
         public void LogOccurrences(Track observedtrack, Track occurenceTrack, DateTime time)
         {
-            // Check if entry already exists for specified aircrafts
+            //Check if entry already exists for specified aircrafts
             using (StreamReader r = File.OpenText("log.txt"))
-            {
-                string line;
-                while ((line = r.ReadLine()) != null)
                 {
-                    if (line.Contains($"Aircrafts involved: {observedtrack.Tag} and {occurenceTrack.Tag}"))
+                    string line;
+                    while ((line = r.ReadLine()) != null)
                     {
-                        return;
+                        if (line.Contains($"Aircrafts involved: {observedtrack.Tag} and {occurenceTrack.Tag}"))
+                        {
+                            return;
+                        }
+
                     }
-                        
                 }
-            }
 
             //Add new log entry
             using (StreamWriter w = File.AppendText("log.txt"))

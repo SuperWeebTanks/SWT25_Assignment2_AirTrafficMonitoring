@@ -52,7 +52,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
                                 int.Parse(properties[4].Substring(4, 2)),
                                 int.Parse(properties[4].Substring(6, 2)), int.Parse(properties[4].Substring(8, 2)),
                                 int.Parse(properties[4].Substring(10, 2))
-                                , int.Parse(properties[4].Substring(12, 2)));
+                                , int.Parse(properties[4].Substring(12, 2)), int.Parse(properties[4].Substring(14,3)));
 
                             commercialTracks.Add(c_Track);
                         }
