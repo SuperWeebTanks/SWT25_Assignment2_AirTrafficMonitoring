@@ -10,10 +10,11 @@ using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 
 namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 {
+
     public class Air_Traffic_Monitor
     {
-        private List<Track> Tracks { get; set; }
-        private List<string[]> OccurrenceTracks { get; set; }
+        public List<Track> Tracks { get; set; }
+        public List<string[]> OccurrenceTracks { get; set; }
         public IOccurenceDetector Detector { get; set; }
         public IDisplay Display { get; set; }
         public ISignalForwarder Airport { get; set; }
@@ -22,8 +23,10 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         public Track ObservedTrack { get; set; }
         public Track OccurenceTrack { get; set; }
         public DateTime OccurrenceTime { get; set; }
+        public IConsoleClear Console { get; set; }
+        public IExceptionHandler Exception { get; set; }
 
-        public Air_Traffic_Monitor(ISignalForwarder airport, IOccurenceDetector detector,IDisplay display, IOccurrenceLogger logger, IFormat formatter)
+        public Air_Traffic_Monitor(ISignalForwarder airport, IOccurenceDetector detector,IDisplay display, IOccurrenceLogger logger, IFormat formatter,IConsoleClear console,IExceptionHandler exc)
         {
             Tracks=new List<Track>();
             OccurrenceTracks = new List<string[]>();
@@ -34,12 +37,23 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             Formatter = formatter;
             Airport.TrackDataEvent += HandleTrackEvent;
             Detector.OccurenceDetectedEvent += HandleOccurenceEvent;
+            Console = console;
+            Exception = exc;
         }
+
         
         private void HandleTrackEvent(object sender, TrackDataEventArgs e)
         {
-            Console.Clear();
+            
+            Console.ClearConsole();
             OccurrenceTracks.Clear();
+            try
+            {
+                if(e.TrackData==null)
+                    throw new NullReferenceException("empty Track list");
+                
+            
+
             var listOfTracks = e.TrackData;
             foreach (var track in listOfTracks)
             {
@@ -48,6 +62,9 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             }
             Display.RenderOccurences(OccurrenceTracks);
             Display.RenderTrack(Tracks);
+            }
+            catch (NullReferenceException ex)
+            { Exception.Handle(ex); }
         }
 
         private void HandleOccurenceEvent(object sender, OccurrenceEventArgs e)
@@ -61,6 +78,19 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 
             // Log occurence
             Logger.LogOccurrences(ObservedTrack, OccurenceTrack, OccurrenceTime);
+        }
+    }
+
+    public interface IConsoleClear
+    {
+        void ClearConsole();
+
+    }
+    public class ConsoleClear
+    {
+        public void ClearConsole()
+        {
+            Console.Clear();
         }
     }
 }

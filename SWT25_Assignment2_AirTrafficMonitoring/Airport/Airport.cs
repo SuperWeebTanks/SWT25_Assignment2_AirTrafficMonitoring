@@ -108,7 +108,7 @@ public class NullReferenceExceptionHandler : IExceptionHandler
 {
     public void Handle(Exception ex)
     {
-        Console.WriteLine("NullReference thrown");
+        Console.WriteLine(ex.Message);
     }
 
 }
