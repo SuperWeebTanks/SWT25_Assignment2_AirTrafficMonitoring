@@ -18,6 +18,9 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         public ISignalForwarder Airport { get; set; }
         public IOccurrenceLogger Logger { get; set; }
         public IFormat Formatter { get; set; }
+        public Track ObservedTrack { get; set; }
+        public Track OccurenceTrack { get; set; }
+        public DateTime OccurrenceTime { get; set; }
 
         public Air_Traffic_Monitor(ISignalForwarder airport, IOccurenceDetector detector,IDisplay display, IOccurrenceLogger logger, IFormat formatter)
         {
@@ -36,7 +39,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             var list = e.TrackData;
             foreach (var track in list)
             {
-                //var listOfTracksInOccurence= kald til IOccurence funktion 
+                //var listOfTracksInOccurence= kald til IOccurence funktion
+                
             }
         }
 
@@ -52,9 +56,5 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             // Log occurence
             Logger.LogOccurrences(ObservedTrack, OccurenceTrack, OccurrenceTime);
         }
-
-        public Track ObservedTrack { get; set; }
-        public Track OccurenceTrack { get; set; }
-        public DateTime OccurrenceTime { get; set; }
     }
 }
