@@ -10,7 +10,7 @@ using NUnit.Framework;
 using NUnit.Framework.Internal;
 using SWT25_Assignment2_AirTrafficMonitoring;
 using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
-
+using TransponderReceiver;
 
 namespace Airport.Unit.Tests
 {
@@ -19,7 +19,7 @@ namespace Airport.Unit.Tests
     {
         private SWT25_Assignment2_AirTrafficMonitoring.Airport _airport;
         private SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory.DecodeFactory _decoderMock;
-        private ITransponderReceiver _transponderReceiverMock;
+        private TransponderReceiver.ITransponderReceiver _transponderReceiverMock;
         private AirSpace _airspace;
         private List<Track> _tracks;
         private Track _track;
@@ -34,7 +34,7 @@ namespace Airport.Unit.Tests
         {
             _airspace = new AirSpace {Height_from = 500, Height_to = 20000, X = 80000, Y = 80000};
             _decoderMock = Substitute.For<SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory.DecodeFactory>();
-            _transponderReceiverMock = Substitute.For<ITransponderReceiver>();
+            _transponderReceiverMock = Substitute.For<TransponderReceiver.ITransponderReceiver>();
             _exceptionHandler = Substitute.For<IExceptionHandler>();
             _airport=new SWT25_Assignment2_AirTrafficMonitoring.Airport(_transponderReceiverMock,_decoderMock,_airspace,_exceptionHandler);
             _track = new Track
@@ -75,7 +75,7 @@ namespace Airport.Unit.Tests
         {
             var _received_strings_to_track = new List<Track>();
             _transponderReceiverMock.TransponderDataReady += Raise.EventWith(_transponderReceiverMock,
-                new RawTransponderDataEventArgs(_received_strings));
+                new TransponderReceiver.RawTransponderDataEventArgs(_received_strings));
             _decoderMock.CreateTracks(Arg.Any<List<string>>()).Returns(_tracks);
             _decoderMock.Received()
                 .CreateTracks(Arg.Is<List<string>>(x =>
@@ -88,7 +88,7 @@ namespace Airport.Unit.Tests
             
             _decoderMock.CreateTracks(Arg.Any<List<string>>()).Returns(_tracks);
         
-            _airport.AirportReceiverHandler(null, new RawTransponderDataEventArgs(new List<string> { "null" }));
+            _airport.AirportReceiverHandler(null, new TransponderReceiver.RawTransponderDataEventArgs(new List<string> { "null" }));
             Assert.That(_trackEventArgs,Is.EquivalentTo(_tracks));
         }
 

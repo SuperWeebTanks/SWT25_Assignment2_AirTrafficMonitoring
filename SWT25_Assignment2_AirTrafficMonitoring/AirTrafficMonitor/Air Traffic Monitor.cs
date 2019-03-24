@@ -69,7 +69,6 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 
         private void HandleOccurenceEvent(object sender, OccurrenceEventArgs e)
         {
-            // Render occurence
             ObservedTrack = e.ObservedTrack;
             OccurenceTrack = e.OccurenceTrack;
             OccurrenceTime = e.OccurenceTime;

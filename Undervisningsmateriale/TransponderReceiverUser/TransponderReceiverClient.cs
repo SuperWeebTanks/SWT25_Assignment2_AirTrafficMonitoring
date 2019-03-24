@@ -4,10 +4,10 @@ namespace TransponderReceiverUser
 {
     public class TransponderReceiverClient
     {
-        private ITransponderReceiver receiver;
+        private TransponderReceiver.ITransponderReceiver receiver;
 
         // Using constructor injection for dependency/ies
-        public TransponderReceiverClient(ITransponderReceiver receiver)
+        public TransponderReceiverClient(TransponderReceiver.ITransponderReceiver receiver)
         {
             // This will store the real or the fake transponder data receiver
             this.receiver = receiver;

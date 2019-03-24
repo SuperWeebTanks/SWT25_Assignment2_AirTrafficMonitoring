@@ -2,6 +2,7 @@
 using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,21 +32,22 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
 
         public void FormatTracks(Track updatedTrack, List<Track> ListOfTracks)
         {
+
             //Check to see if track already exists in list of tracks
-            if (ListOfTracks.Contains(updatedTrack))
+            if (!object.ReferenceEquals(ListOfTracks.Find(x => x.Tag.Contains(updatedTrack.Tag)), null))
             {
                 var track = ListOfTracks.Find(x => x.Tag.Contains(updatedTrack.Tag));
+                //Update these, compare to previous location 
+                track.CurrentHorizontalVelocity = Calculator.CalculateHorizontalVelocity(updatedTrack, track);
+
+                track.CurrentCompassCourse = (int)Calculator.CalculateCompassCourse(updatedTrack, track);
+
                 //Update all properties for that track
                 track.CurrentPositionX = updatedTrack.CurrentPositionX;
                 track.CurrentPositionY = updatedTrack.CurrentPositionY;
                 track.CurrentAltitude = updatedTrack.CurrentAltitude;
-
-                //Update these, compare to previous location 
-                track.CurrentHorizontalVelocity = Calculator.CalculateHorizontalVelocity(updatedTrack, track);
-
-                track.CurrentCompassCourse = (int)Calculator.CalculateCompassCourse(updatedTrack, track); 
-
                 track.TimeStamp = updatedTrack.TimeStamp;
+                
             }
             //Track does not exist, therefore it must be rendered as a new track
             else

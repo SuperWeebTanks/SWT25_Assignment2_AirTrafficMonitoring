@@ -20,7 +20,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         event EventHandler<OccurrenceEventArgs> OccurenceDetectedEvent;
     }
 
-    public class Commercial_OD : IOccurenceDetector
+    public class TrackOccurrenceDetector : IOccurenceDetector
     {
         public event EventHandler<OccurrenceEventArgs> OccurenceDetectedEvent;
 
@@ -32,13 +32,18 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         {
             foreach (var t in tracks)
             {
-                _altitudeDistance = (track.CurrentAltitude - t.CurrentAltitude > 0) ?
-                    (track.CurrentAltitude - t.CurrentAltitude) : (t.CurrentAltitude - track.CurrentAltitude);
+                if (track.Tag != t.Tag)
+                {
+                    _altitudeDistance = (track.CurrentAltitude - t.CurrentAltitude > 0)
+                        ? (track.CurrentAltitude - t.CurrentAltitude)
+                        : (t.CurrentAltitude - track.CurrentAltitude);
 
-                _horizontalDistance = Calculator.CalculateHorizontalDistance(track, t);
+                    _horizontalDistance = Calculator.CalculateHorizontalDistance(track, t);
 
-                if ((_altitudeDistance < 300) && (_horizontalDistance < 5000))
-                    OnOccurenceDetectedEvent(new OccurrenceEventArgs { ObservedTrack = track, OccurenceTrack = t, OccurenceTime = DateTime.Now});
+                    if ((_altitudeDistance < 300) && (_horizontalDistance < 5000))
+                        OnOccurenceDetectedEvent(new OccurrenceEventArgs
+                            {ObservedTrack = track, OccurenceTrack = t, OccurenceTime = DateTime.Now});
+                }
             }
         }
 
