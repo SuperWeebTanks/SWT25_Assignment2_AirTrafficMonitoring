@@ -32,16 +32,18 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         {
             foreach (var t in tracks)
             {
-                if (track.Tag == t.Tag)
-                    return;
+                if (track.Tag != t.Tag)
+                {
+                    _altitudeDistance = (track.CurrentAltitude - t.CurrentAltitude > 0)
+                        ? (track.CurrentAltitude - t.CurrentAltitude)
+                        : (t.CurrentAltitude - track.CurrentAltitude);
 
-                _altitudeDistance = (track.CurrentAltitude - t.CurrentAltitude > 0) ?
-                    (track.CurrentAltitude - t.CurrentAltitude) : (t.CurrentAltitude - track.CurrentAltitude);
+                    _horizontalDistance = Calculator.CalculateHorizontalDistance(track, t);
 
-                _horizontalDistance = Calculator.CalculateHorizontalDistance(track, t);
-
-                if ((_altitudeDistance < 300) && (_horizontalDistance < 5000))
-                    OnOccurenceDetectedEvent(new OccurrenceEventArgs { ObservedTrack = track, OccurenceTrack = t, OccurenceTime = DateTime.Now});
+                    if ((_altitudeDistance < 300) && (_horizontalDistance < 5000))
+                        OnOccurenceDetectedEvent(new OccurrenceEventArgs
+                            {ObservedTrack = track, OccurenceTrack = t, OccurenceTime = DateTime.Now});
+                }
             }
         }
 

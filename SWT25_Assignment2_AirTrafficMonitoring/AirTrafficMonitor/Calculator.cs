@@ -29,7 +29,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         /// <returns>Horizontal Velocity in meters per second </returns>
         public static double CalculateHorizontalVelocity(Track updatedTrack, Track oldTrack)
         {
-            var timeDifference = (updatedTrack.TimeStamp - oldTrack.TimeStamp).TotalSeconds;
+            var timeDifference = (updatedTrack.TimeStamp - oldTrack.TimeStamp).TotalMilliseconds;
             var distance = CalculateHorizontalDistance(oldTrack, updatedTrack);
             if ((distance > 0) && (timeDifference > 0))
                 return (CalculateHorizontalDistance(oldTrack, updatedTrack)/(updatedTrack.TimeStamp - oldTrack.TimeStamp).TotalSeconds);

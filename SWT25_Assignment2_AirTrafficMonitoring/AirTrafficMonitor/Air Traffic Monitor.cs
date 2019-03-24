@@ -12,8 +12,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 {
     public class Air_Traffic_Monitor
     {
-        private List<Track> Tracks { get; set; }
-        private List<string[]> OccurrenceTracks { get; set; }
+        public List<Track> Tracks { get; set; }
+        public List<string[]> OccurrenceTracks { get; set; }
         public IOccurenceDetector Detector { get; set; }
         public IDisplay Display { get; set; }
         public ISignalForwarder Airport { get; set; }
@@ -50,6 +50,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 
                 }
                 Display.RenderOccurences(OccurrenceTracks);
+                Console.WriteLine();
                 Display.RenderTrack(Tracks);
             }
         }

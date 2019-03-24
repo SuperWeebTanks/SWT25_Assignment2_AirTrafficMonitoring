@@ -34,7 +34,7 @@ namespace DecodeFactory.Test.Unit
             TestTrack.CurrentPositionX = 2004;
             TestTrack.CurrentPositionY = 18204;
             TestTrack.CurrentAltitude = 5500;
-            TestTrack.TimeStamp = new DateTime(2015, 10, 06, 21, 34, 56);
+            TestTrack.TimeStamp = new DateTime(2015, 10, 06, 21, 34, 56, 789);
 
 
         }
