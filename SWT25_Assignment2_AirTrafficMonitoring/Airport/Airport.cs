@@ -15,7 +15,13 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
         public int X { get; set; }
         public int Y { get; set; }
     }
-    public class Airport
+
+    public interface ISignalForwarder
+    {
+        event EventHandler<TrackDataEventArgs> TrackDataEvent;
+    }
+    
+    public class Airport : ISignalForwarder
     {
         /// <summary>
         /// Airport Constructor
@@ -42,7 +48,6 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
         public DecodeFactory.DecodeFactory Decode { get; private set; }
         public ITransponderReceiver Receiver { get; private set; }
         public AirSpace airspace { get; private set; }
- 
 
         #endregion
 
@@ -75,8 +80,6 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
        }
     }
 
-
-
     public class TrackDataEventArgs : EventArgs
     {
         public TrackDataEventArgs(List<Track> trackData)
@@ -84,9 +87,5 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
             TrackData = trackData;
         }
         public List<Track> TrackData { get; set; }
-
-
     }
-
-    
 }
