@@ -83,7 +83,7 @@ namespace AirTrafficMonitor.Unit.Test
             _occurenceSource.OccurenceDetectedEvent += Raise.EventWith<OccurrenceEventArgs>
                 (new OccurrenceEventArgs { ObservedTrack = _observedTrack, OccurenceTrack = _occurenceTrack, OccurenceTime = DateTime.Now });
 
-            _display.Received(1).RenderOccurences(Arg.Any<string[]>());
+            _formatter.Received(1).FormatOccurence(Arg.Any<Track>(), Arg.Any<Track>(), Arg.Any<DateTime>());
         }
 
         [Test]

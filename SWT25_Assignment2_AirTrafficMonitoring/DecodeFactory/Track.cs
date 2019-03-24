@@ -77,11 +77,6 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         #endregion
         
         #region Overloads == & != 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
         public static bool operator ==(Track obj1, Track obj2)
         {
             return (obj1.Tag == obj2.Tag && obj1.CurrentPositionX == obj2.CurrentPositionX

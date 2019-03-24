@@ -20,7 +20,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         event EventHandler<OccurrenceEventArgs> OccurenceDetectedEvent;
     }
 
-    public class Commercial_OD : IOccurenceDetector
+    public class TrackOccurrenceDetector : IOccurenceDetector
     {
         public event EventHandler<OccurrenceEventArgs> OccurenceDetectedEvent;
 
