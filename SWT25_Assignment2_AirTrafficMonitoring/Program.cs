@@ -12,7 +12,11 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
         static void Main(string[] args)
         {
            
+            A
+
+
             #region DecodeFactory Test
+            /*
             var Aircrafts = new List<string>
             {
                 "BTR312;2004;18204;5500;20151006213456789",
@@ -33,6 +37,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
                 Console.WriteLine( $"Timestamp: {track.TimeStamp.ToString()}\n");
                 
             }
+            */
             #endregion
 
 
