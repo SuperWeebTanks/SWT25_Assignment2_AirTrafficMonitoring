@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor;
+using TransponderReceiver;
+using System.Threading;
 
 namespace SWT25_Assignment2_AirTrafficMonitoring
 {
@@ -11,8 +14,35 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
     {
         static void Main(string[] args)
         {
-           
-            A
+            //Dependencies for Airport
+            DecodeFactory.DecodeFactory trackFactory = new TrackFactory();
+            AirSpace airspace = new AirSpace
+            {
+                Height_from = 500,
+                Height_to = 20000,
+                X = 80000,
+                Y = 80000
+            };
+            IExceptionHandler exceptionHandler = new NullReferenceExceptionHandler();
+
+            var receiver = TransponderReceiverFactory.CreateTransponderDataReceiver();
+
+            //// Dependency injection with the real TDR
+            //var system = new TransponderReceiverUser.TransponderReceiverClient(receiver);
+
+            //// Let the real TDR execute in the background
+            //while (true)
+            //    Thread.Sleep(1000);
+
+            var Airport = new Airport(receiver, trackFactory, airspace, exceptionHandler);
+
+            //Dependencies for ATM 
+            IOccurenceDetector Detector = new TrackOccurrenceDetector();
+            IDisplay Display = new MonitorConsole();
+            IOccurrenceLogger Logger = new OccurrenceLogger();
+            IFormat Formatter = new TrackFormater();
+
+            Air_Traffic_Monitor ATM = new Air_Traffic_Monitor(Airport, Detector, Display, Logger, Formatter);
 
 
             #region DecodeFactory Test

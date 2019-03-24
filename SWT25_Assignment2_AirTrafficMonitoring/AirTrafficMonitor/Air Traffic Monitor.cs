@@ -38,16 +38,20 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         
         private void HandleTrackEvent(object sender, TrackDataEventArgs e)
         {
-            Console.Clear();
-            OccurrenceTracks.Clear();
-            var listOfTracks = e.TrackData;
-            foreach (var track in listOfTracks)
+            if (e.TrackData != null)
             {
-                Formatter.FormatTracks(track, Tracks);
-                Detector.CheckOccurrence(track, Tracks);
+                Console.Clear();
+                OccurrenceTracks.Clear();
+                var listOfTracks = e.TrackData;
+                foreach (var track in listOfTracks)
+                {
+                    Formatter.FormatTracks(track, Tracks);
+                    Detector.CheckOccurrence(track, Tracks);
+                }
+
+                Display.RenderOccurences(OccurrenceTracks);
+                Display.RenderTrack(Tracks);
             }
-            Display.RenderOccurences(OccurrenceTracks);
-            Display.RenderTrack(Tracks);
         }
 
         private void HandleOccurenceEvent(object sender, OccurrenceEventArgs e)

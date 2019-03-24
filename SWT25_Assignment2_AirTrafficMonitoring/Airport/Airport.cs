@@ -1,5 +1,4 @@
-﻿using SWT25_Assignment2_AirTrafficMonitoring.TransponderReceiver;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +35,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
 
         #region Constructors 
 
-        public Airport(ITransponderReceiver receiver, DecodeFactory.DecodeFactory decode, AirSpace airspace,IExceptionHandler exc)
+        public Airport(TransponderReceiver.ITransponderReceiver receiver, DecodeFactory.DecodeFactory decode, AirSpace airspace,IExceptionHandler exc)
         {
             Decode = decode;
             Receiver = receiver;
@@ -50,7 +49,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
         #region Properties
 
         public DecodeFactory.DecodeFactory Decode { get; private set; }
-        public ITransponderReceiver Receiver { get; private set; }
+        public TransponderReceiver.ITransponderReceiver Receiver { get; private set; }
         public AirSpace airspace { get; private set; }
         public IExceptionHandler exception_handler { get; set; }
 
@@ -59,7 +58,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
 
 
 
-        public void AirportReceiverHandler(object sender, RawTransponderDataEventArgs e)
+        public void AirportReceiverHandler(object sender, TransponderReceiver.RawTransponderDataEventArgs e)
         {
             var list = Decode.CreateTracks(e.TransponderData);
             var filteredList = FilterTracks(list);

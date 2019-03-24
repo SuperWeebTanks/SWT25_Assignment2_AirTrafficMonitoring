@@ -22,7 +22,7 @@ namespace OccurrenceDetector.Unit.Test
             public void SetUp()
             {
                 _receivedOccurenceEventArgs = null;
-                _uut = new Commercial_OD();
+                _uut = new TrackOccurrenceDetector();
                 _observedTrack = new  Track();
                 _occurenceTrack = new Track();
                 _occurenceTracks = new List<Track>();
