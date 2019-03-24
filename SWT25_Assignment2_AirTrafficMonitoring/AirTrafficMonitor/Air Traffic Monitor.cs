@@ -10,16 +10,19 @@ using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 
 namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 {
-    public abstract class Air_Traffic_Monitor
+    public class Air_Traffic_Monitor
     {
         private List<Track> tracks;
         public IOccurenceDetector Detector { get; set; }
         public IDisplay Display { get; set; }
-        public Airport Airport { get; set; }
+        public ISignalForwarder Airport { get; set; }
         public IOccurrenceLogger Logger { get; set; }
         public IFormat Formatter { get; set; }
+        public Track ObservedTrack { get; set; }
+        public Track OccurenceTrack { get; set; }
+        public DateTime OccurrenceTime { get; set; }
 
-        protected Air_Traffic_Monitor(Airport airport, IOccurenceDetector detector,IDisplay display, IOccurrenceLogger logger, IFormat formatter)
+        public Air_Traffic_Monitor(ISignalForwarder airport, IOccurenceDetector detector,IDisplay display, IOccurrenceLogger logger, IFormat formatter)
         {
             tracks=new List<Track>();
             Airport = airport;
@@ -27,6 +30,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             Detector = detector;
             Logger = logger;    
             Formatter = formatter;
+            Airport.TrackDataEvent += Update;
+            Detector.OccurenceDetectedEvent += HandleOccurenceEvent;
         }
         
         public void Update(Object sender, TrackDataEventArgs e)
@@ -34,23 +39,9 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             var list = e.TrackData;
             foreach (var track in list)
             {
-                //var listOfTracksInOccurence= kald til IOccurence funktion 
+                //var listOfTracksInOccurence= kald til IOccurence funktion
+                
             }
-        }
-        public Track ObservedTrack { get; set; }
-        public Track OccurenceTrack { get; set; }
-        public DateTime OccurrenceTime { get; set; }
-    }
-
-    public class Commercial_ATM : Air_Traffic_Monitor
-    {
-        
-
-        public Commercial_ATM(Airport airport, IOccurenceDetector detector, IDisplay display, IOccurrenceLogger logger,IFormat formatter)
-        : base(airport, detector, display, logger,formatter)
-        {
-            Airport.TrackDataEvent += Update;
-            Detector.OccurenceDetectedEvent += HandleOccurenceEvent;
         }
 
         private void HandleOccurenceEvent(object sender, OccurrenceEventArgs e)
@@ -61,7 +52,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             OccurrenceTime = e.OccurenceTime;
 
             Display.RenderOccurences(Formatter.FormatOccurence(ObservedTrack, OccurenceTrack, OccurrenceTime));
-            
+
             // Log occurence
             Logger.LogOccurrences(ObservedTrack, OccurenceTrack, OccurrenceTime);
         }

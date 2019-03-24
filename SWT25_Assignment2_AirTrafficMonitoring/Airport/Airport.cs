@@ -16,7 +16,12 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
         public int Y { get; set; }
     }
 
-    public class Airport
+    public interface ISignalForwarder
+    {
+        event EventHandler<TrackDataEventArgs> TrackDataEvent;
+    }
+    
+    public class Airport : ISignalForwarder
     {
         /// <summary>
         /// Airport Constructor
@@ -108,8 +113,6 @@ public class NullReferenceExceptionHandler : IExceptionHandler
 
 }
 
-
-
     public class TrackDataEventArgs : EventArgs
     {
         public TrackDataEventArgs(List<Track> trackData)
@@ -117,8 +120,6 @@ public class NullReferenceExceptionHandler : IExceptionHandler
             TrackData = trackData;
         }
         public List<Track> TrackData { get; set; }
-
-
     }
 
     

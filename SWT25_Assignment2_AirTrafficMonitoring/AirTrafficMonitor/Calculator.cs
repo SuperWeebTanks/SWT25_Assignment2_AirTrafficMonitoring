@@ -58,8 +58,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
                 }
                 else if (x > 0 && y < 0)
                 {
-                    angle = -angle;
-                    angle += 270;
+                    angle += 360;
                 }
                 else if (x == 0 && y < 0)
                 {

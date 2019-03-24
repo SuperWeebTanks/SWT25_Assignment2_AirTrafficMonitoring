@@ -5,18 +5,17 @@ using NSubstitute;
 using NSubstitute.ReturnsExtensions;
 using NUnit.Framework;
 using SWT25_Assignment2_AirTrafficMonitoring;
-
 using SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor;
 using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 
 namespace AirTrafficMonitor.Unit.Test
 {
     [TestFixture]
-    public class AirTrafficMonitorTest
+    public class TestAirTrafficMonitor
     {
         private Air_Traffic_Monitor _uut;
         private IOccurenceDetector _occurenceSource;
-        private SWT25_Assignment2_AirTrafficMonitoring.Airport _airport;
+        private ISignalForwarder _airport;
         private IDisplay _display;
         private IOccurrenceLogger _logger;
         private IFormat _formatter;
@@ -28,10 +27,11 @@ namespace AirTrafficMonitor.Unit.Test
         public void Setup()
         {
             _occurenceSource = Substitute.For<IOccurenceDetector>();
-            
+
             _display = Substitute.For<IDisplay>();
             _logger = Substitute.For<IOccurrenceLogger>();
             _formatter = Substitute.For<IFormat>();
+            _airport = Substitute.For<ISignalForwarder>();
 
             _observedTrack = new Track();
             _occurenceTrack = new Track();
@@ -47,7 +47,7 @@ namespace AirTrafficMonitor.Unit.Test
             _occurenceTrack.CurrentPositionX = 7600;
             _occurenceTrack.CurrentPositionY = 7600;
 
-            _uut = new Commercial_ATM(_airport, _occurenceSource, _display,_logger, _formatter);
+            _uut = new Air_Traffic_Monitor(_airport, _occurenceSource, _display, _logger, _formatter);
         }
 
         [Test]

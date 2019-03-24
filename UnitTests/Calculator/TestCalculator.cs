@@ -239,6 +239,23 @@ namespace DecodeFactory.Test.Unit
         }
 
         [Test]
+        public void CalculateCompassCourse_CalculateCompassCourseForTrackSouthEastRegion_ReturnsCourse()
+        {
+            //Arrange
+            double angle;
+            OldTrack.CurrentPositionX = 2000;
+            OldTrack.CurrentPositionY = 3000;
+            UpdatedTrack.CurrentPositionX = 2100;
+            UpdatedTrack.CurrentPositionY = 2000;
+
+            //Assert 
+            angle = Calculator.CalculateCompassCourse(UpdatedTrack, OldTrack);
+
+            //Assert
+            Assert.That(angle, Is.EqualTo(275.71).Within(0.01));
+        }
+
+        [Test]
         public void CalculateCompassCourse_CalculateCompassCourseForTrackNorth_ReturnsCourse()
         {
             //Arrange
