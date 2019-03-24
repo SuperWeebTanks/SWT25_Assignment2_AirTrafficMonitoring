@@ -47,8 +47,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
                 {
                     Formatter.FormatTracks(track, Tracks);
                     Detector.CheckOccurrence(track, Tracks);
-                }
 
+                }
                 Display.RenderOccurences(OccurrenceTracks);
                 Display.RenderTrack(Tracks);
             }

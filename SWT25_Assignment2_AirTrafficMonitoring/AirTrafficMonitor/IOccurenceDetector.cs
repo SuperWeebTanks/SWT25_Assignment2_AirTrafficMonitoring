@@ -32,6 +32,9 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         {
             foreach (var t in tracks)
             {
+                if (track.Tag == t.Tag)
+                    return;
+
                 _altitudeDistance = (track.CurrentAltitude - t.CurrentAltitude > 0) ?
                     (track.CurrentAltitude - t.CurrentAltitude) : (t.CurrentAltitude - track.CurrentAltitude);
 

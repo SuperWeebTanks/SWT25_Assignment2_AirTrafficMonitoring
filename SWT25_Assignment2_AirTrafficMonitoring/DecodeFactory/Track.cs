@@ -79,6 +79,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
         #region Overloads == & != 
         public static bool operator ==(Track obj1, Track obj2)
         {
+            if (object.ReferenceEquals(obj1, null))
+                return object.ReferenceEquals(obj2, null); 
             return (obj1.Tag == obj2.Tag && obj1.CurrentPositionX == obj2.CurrentPositionX
                                          && obj1.CurrentAltitude == obj2.CurrentAltitude &&
                                          obj1.CurrentPositionY == obj2.CurrentPositionY
@@ -89,6 +91,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory
 
         public static bool operator !=(Track obj1, Track obj2)
         {
+            if (object.ReferenceEquals(obj1, null))
+                return object.ReferenceEquals(obj2, null);
             return (obj1.Tag != obj2.Tag || obj1.CurrentPositionX != obj2.CurrentPositionX
                                          || obj1.CurrentAltitude != obj2.CurrentAltitude ||
                                          obj1.CurrentPositionY != obj2.CurrentPositionY
