@@ -10,7 +10,7 @@ using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 
 namespace OccurrenceDetector.Unit.Test
 {
-    public class OccurenceDetector
+    public class TestOccurenceDetector
     {
             private IOccurenceDetector _uut;
             private OccurrenceEventArgs _receivedOccurenceEventArgs;

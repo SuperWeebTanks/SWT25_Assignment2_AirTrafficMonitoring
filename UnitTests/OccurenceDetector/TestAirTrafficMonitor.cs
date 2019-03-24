@@ -12,7 +12,7 @@ using SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory;
 namespace AirTrafficMonitor.Unit.Test
 {
     [TestFixture]
-    public class AirTrafficMonitorTest
+    public class TestAirTrafficMonitor
     {
         private Air_Traffic_Monitor _uut;
         private IOccurenceDetector _occurenceSource;
