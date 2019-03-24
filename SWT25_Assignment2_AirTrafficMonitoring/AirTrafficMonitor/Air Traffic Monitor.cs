@@ -85,7 +85,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
         void ClearConsole();
 
     }
-    public class ConsoleClear
+    public class ConsoleClear:IConsoleClear
     {
         public void ClearConsole()
         {
