@@ -117,5 +117,31 @@ namespace OccurrenceDetector.Unit.Test
                 Assert.That(_receivedOccurenceEventArgs.OccurenceTrack.Tag,
                     Is.EqualTo("Track2"));
             }
+
+            [Test]
+            public void CheckOccurrences_AltitudeDistanceJustBelowThreshold_EventFired()
+            {
+                _occurenceTrack.CurrentAltitude = 1299;
+                _occurenceTrack.CurrentPositionX = 5000;
+                _occurenceTrack.CurrentPositionY = 5000;
+                _occurenceTracks.Add(_occurenceTrack);
+
+                _uut.CheckOccurrence(_observedTrack, _occurenceTracks);
+
+                Assert.That(_receivedOccurenceEventArgs, Is.Not.Null);
+            }
+
+            [Test]
+            public void CheckOccurrences_AltitudeDistanceJustAboveThreshold_EventNotFired()
+            {
+                _occurenceTrack.CurrentAltitude = 1300;
+                _occurenceTrack.CurrentPositionX = 5000;
+                _occurenceTrack.CurrentPositionY = 5000;
+                _occurenceTracks.Add(_occurenceTrack);
+
+                _uut.CheckOccurrence(_observedTrack, _occurenceTracks);
+
+                Assert.That(_receivedOccurenceEventArgs, Is.Null);
+            }
     }
 }
