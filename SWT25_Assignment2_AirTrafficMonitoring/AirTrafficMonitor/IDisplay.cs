@@ -9,17 +9,20 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 {
     public interface IDisplay
     {
-        void RenderOccurences(string[] occurences);
+        void RenderOccurences(List<string[]> occurences);
         void RenderTrack(List<Track> ListOfTracks);
     }
     
     public class MonitorConsole : IDisplay
     {
-        public void RenderOccurences(string[] occurences)
+        public void RenderOccurences(List<string[]> occurences)
         {
-            foreach (var textline in occurences)
+            foreach (var textarray in occurences)
             {
-                Console.WriteLine(textline);
+                foreach (var text in textarray)
+                {
+                    Console.WriteLine(text);
+                }
             }
         }
 

@@ -65,15 +65,23 @@ namespace DecodeFactory.Test.Unit
         }
 
         [Test]
-        public void CreateTrack_StringContainsInvalidTagName_CatchesException()
+        public void CreateTrack_StringContainsInvalidString_CatchesException()
         {
             //Arrange
-            var invalidTrack = "asdf;2005;3020313;2040221402561123";
-            var InvalidTag = new List<string>();
-            InvalidTag.Add(invalidTrack);
+            var invalidTrackString = "asdf;2005;3020313;2040221402561123";
+            var InvalidString = new List<string>();
+            InvalidString.Add(invalidTrackString);
 
-            //Act & Assert
-            Assert.Catch<ArgumentException>(() => _uut.CreateTracks(InvalidTag)); 
+            try
+            {
+                //Act
+                _uut.CreateTracks(InvalidString);
+            }
+            catch (ArgumentException ex)
+            {
+                //Assert
+                Assert.That(ex.Message, Is.EqualTo("Invalid String"));
+            }
         }
 
         [Test]
