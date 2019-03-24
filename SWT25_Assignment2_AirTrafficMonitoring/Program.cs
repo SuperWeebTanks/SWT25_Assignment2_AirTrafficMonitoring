@@ -34,8 +34,10 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
             IDisplay Display = new MonitorConsole();
             IOccurrenceLogger Logger = new OccurrenceLogger();
             IFormat Formatter = new TrackFormater();
+            IExceptionHandler Exception=new NullReferenceExceptionHandler();
+            IConsoleClear Consoler=new ConsoleClear();
 
-            Air_Traffic_Monitor ATM = new Air_Traffic_Monitor(Airport, Detector, Display, Logger, Formatter);
+            Air_Traffic_Monitor ATM = new Air_Traffic_Monitor(Airport, Detector, Display, Logger, Formatter,Consoler,Exception);
 
 
             #region DecodeFactory Test
