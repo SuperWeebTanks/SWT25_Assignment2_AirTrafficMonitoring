@@ -24,6 +24,10 @@ namespace Airport.Unit.Tests
         private List<Track> _tracks;
         private Track _track;
         private List<Track> _trackEventArgs;
+        private List<string> _received_strings;
+        private IExceptionHandler _exceptionHandler;
+
+     
 
         [SetUp]
         public void Setup()
@@ -31,7 +35,8 @@ namespace Airport.Unit.Tests
             _airspace = new AirSpace {Height_from = 500, Height_to = 20000, X = 80000, Y = 80000};
             _decoderMock = Substitute.For<SWT25_Assignment2_AirTrafficMonitoring.DecodeFactory.DecodeFactory>();
             _transponderReceiverMock = Substitute.For<ITransponderReceiver>();
-            _airport=new SWT25_Assignment2_AirTrafficMonitoring.Airport(_transponderReceiverMock,_decoderMock,_airspace);
+            _exceptionHandler = Substitute.For<IExceptionHandler>();
+            _airport=new SWT25_Assignment2_AirTrafficMonitoring.Airport(_transponderReceiverMock,_decoderMock,_airspace,_exceptionHandler);
             _track = new Track
             {
                 CurrentAltitude = 600,
@@ -46,7 +51,35 @@ namespace Airport.Unit.Tests
             _tracks = new List<Track> { _track };
 
             _airport.TrackDataEvent += (o, args) => { _trackEventArgs = args.TrackData; };
+            _received_strings=new List<string>{"BTR312;2004;18204;5500;20151006213456789" };
+           
+        }
 
+        [Test]
+        public void FilterTracks_NullReferenceException_called()
+        {
+           
+            _airport.FilterTracks(null);
+            _exceptionHandler.Received();
+        }
+
+        [Test]
+        public void FilterTracks_NullReferenceException_Notcalled()
+        {
+            _airport.FilterTracks(_tracks);
+            _exceptionHandler.DidNotReceive();
+        }
+
+        [Test]
+        public void AirportReceiverHandler_CalledWithCorrectArguments()
+        {
+            var _received_strings_to_track = new List<Track>();
+            _transponderReceiverMock.TransponderDataReady += Raise.EventWith(_transponderReceiverMock,
+                new RawTransponderDataEventArgs(_received_strings));
+            _decoderMock.CreateTracks(Arg.Any<List<string>>()).Returns(_tracks);
+            _decoderMock.Received()
+                .CreateTracks(Arg.Is<List<string>>(x =>
+                    _received_strings.SequenceEqual(new List<string> {"BTR312;2004;18204;5500;20151006213456789"})));
         }
 
         [Test]
