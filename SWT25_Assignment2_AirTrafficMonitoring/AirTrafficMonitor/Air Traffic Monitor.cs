@@ -12,7 +12,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 {
     public class Air_Traffic_Monitor
     {
-        private List<Track> Tracks { get; set; }
+        public List<Track> Tracks { get; set; }
         private List<string[]> OccurrenceTracks { get; set; }
         public IOccurenceDetector Detector { get; set; }
         public IDisplay Display { get; set; }
@@ -47,7 +47,6 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
                 {
                     Formatter.FormatTracks(track, Tracks);
                     Detector.CheckOccurrence(track, Tracks);
-
                 }
                 Display.RenderOccurences(OccurrenceTracks);
                 Display.RenderTrack(Tracks);
@@ -56,7 +55,6 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 
         private void HandleOccurenceEvent(object sender, OccurrenceEventArgs e)
         {
-            // Render occurence
             ObservedTrack = e.ObservedTrack;
             OccurenceTrack = e.OccurenceTrack;
             OccurrenceTime = e.OccurenceTime;
