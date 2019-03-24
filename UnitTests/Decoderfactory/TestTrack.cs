@@ -85,6 +85,7 @@ namespace DecodeFactory.Test.Unit
             Assert.That(_uut.CurrentAltitude, Is.EqualTo(1000));
         }
 
+        [Test]
         public void PropertyCurrentAltitude_SetInvalidCurrentAltitudeForTrack_ThrowsException()
         {
             Assert.Throws<ArgumentException>(() => _uut.CurrentAltitude = -1000); 

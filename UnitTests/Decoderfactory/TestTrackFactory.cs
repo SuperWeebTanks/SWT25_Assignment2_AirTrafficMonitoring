@@ -42,18 +42,13 @@ namespace DecodeFactory.Test.Unit
         [Test]
         public void CreateTracks_ReceiveStringConvertToTrack_ReturnsTrack()
         {
-            //Arrange
-            bool TracksAreTheSame; 
-
             //Act - Send 2 strings to be created as tracks 
             var ListOfTracks = _uut.CreateTracks(ListOfStrings);
             var Track = ListOfTracks.Find((x) => x.Tag.Contains("BTR312"));
 
-            //Uses overloaded == operation
-            TracksAreTheSame = TestTrack == Track; 
 
             //Assert 
-            Assert.That(TracksAreTheSame, Is.EqualTo(true));
+            Assert.That(TestTrack == Track, Is.EqualTo(true));
 
         }
 

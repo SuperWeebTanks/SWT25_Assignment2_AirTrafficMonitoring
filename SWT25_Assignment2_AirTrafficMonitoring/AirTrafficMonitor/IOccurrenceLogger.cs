@@ -30,7 +30,10 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
                 while ((line = r.ReadLine()) != null)
                 {
                     if (line.Contains($"Aircrafts involved: {observedtrack.Tag} and {occurenceTrack.Tag}"))
+                    {
                         return;
+                    }
+                        
                 }
             }
 
