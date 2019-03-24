@@ -79,10 +79,6 @@
       <Project>{59d2dc2d-8657-4277-8ed4-dd24da1391a3}</Project>
       <Name>SWT25_Assignment2_AirTrafficMonitoring</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Undervisningsmateriale\TransponderReceiverApplication\TransponderReceiverApplication.csproj">
-      <Project>{5bf5a5a7-e181-4321-a362-d16f4849586a}</Project>
-      <Name>TransponderReceiverApplication</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Undervisningsmateriale\TransponderReceiverUser\TransponderReceiverUser.csproj">
       <Project>{ad9e07f6-3d14-47c9-955e-ff20c7fe5433}</Project>
       <Name>TransponderReceiverUser</Name>
