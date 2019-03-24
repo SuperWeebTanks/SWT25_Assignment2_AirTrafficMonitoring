@@ -79,7 +79,7 @@ namespace Airport.Unit.Tests
             _decoderMock.CreateTracks(Arg.Any<List<string>>()).Returns(_tracks);
             _decoderMock.Received()
                 .CreateTracks(Arg.Is<List<string>>(x =>
-                    _received_strings.SequenceEqual(new List<string> {"BTR312;2004;18204;5500;20151006213456789"})));
+                    x.SequenceEqual(new List<string> {"BTR312;2004;18204;5500;20151006213456789"})));
         }
 
         [Test]
