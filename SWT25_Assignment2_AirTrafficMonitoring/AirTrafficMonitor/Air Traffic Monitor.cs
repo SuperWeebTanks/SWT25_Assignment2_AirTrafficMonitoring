@@ -12,7 +12,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 {
     public class Air_Traffic_Monitor
     {
-        private List<Track> tracks;
+        private List<Track> Tracks { get; set; }
+        private List<string[]> OccurrenceTracks { get; set; }
         public IOccurenceDetector Detector { get; set; }
         public IDisplay Display { get; set; }
         public ISignalForwarder Airport { get; set; }
@@ -24,24 +25,29 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
 
         public Air_Traffic_Monitor(ISignalForwarder airport, IOccurenceDetector detector,IDisplay display, IOccurrenceLogger logger, IFormat formatter)
         {
-            tracks=new List<Track>();
+            Tracks=new List<Track>();
+            OccurrenceTracks = new List<string[]>();
             Airport = airport;
             Display = display;
             Detector = detector;
             Logger = logger;    
             Formatter = formatter;
-            Airport.TrackDataEvent += Update;
+            Airport.TrackDataEvent += HandleTrackEvent;
             Detector.OccurenceDetectedEvent += HandleOccurenceEvent;
         }
         
-        public void Update(Object sender, TrackDataEventArgs e)
+        private void HandleTrackEvent(object sender, TrackDataEventArgs e)
         {
-            var list = e.TrackData;
-            foreach (var track in list)
+            Console.Clear();
+            OccurrenceTracks.Clear();
+            var listOfTracks = e.TrackData;
+            foreach (var track in listOfTracks)
             {
-                //var listOfTracksInOccurence= kald til IOccurence funktion
-                
+                Formatter.FormatTracks(track, Tracks);
+                Detector.CheckOccurrence(track, Tracks);
             }
+            Display.RenderOccurences(OccurrenceTracks);
+            Display.RenderTrack(Tracks);
         }
 
         private void HandleOccurenceEvent(object sender, OccurrenceEventArgs e)
@@ -51,7 +57,7 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             OccurenceTrack = e.OccurenceTrack;
             OccurrenceTime = e.OccurenceTime;
 
-            Display.RenderOccurences(Formatter.FormatOccurence(ObservedTrack, OccurenceTrack, OccurrenceTime));
+            OccurrenceTracks.Add(Formatter.FormatOccurence(ObservedTrack, OccurenceTrack, OccurrenceTime));
 
             // Log occurence
             Logger.LogOccurrences(ObservedTrack, OccurenceTrack, OccurrenceTime);

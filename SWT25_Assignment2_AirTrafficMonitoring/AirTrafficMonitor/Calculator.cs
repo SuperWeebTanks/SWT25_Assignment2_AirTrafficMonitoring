@@ -36,13 +36,20 @@ namespace SWT25_Assignment2_AirTrafficMonitoring.AirTrafficMonitor
             else
                 return 0; 
         }
-        
+
         /// <summary>
         /// Calculates Compass Course based on two track positions
         /// </summary>
         /// <param name="updatedTrack"></param>
         /// <param name="oldTrack"></param>
         /// <returns></returns>
+        ///
+        /// NorthEastRegion 0-90 degress (See it as a unit circle)
+        /// NorthWestRegion 90-180 degress
+        /// SouthWestRegion 180-270 degrees
+        /// SouthEastRegion 270-359 degrees
+        /// North = 90, West = 180, East = 0, South = 270
+        /// </summary>
         public static double CalculateCompassCourse(Track updatedTrack, Track oldTrack)
         {
             double x = updatedTrack.CurrentPositionX - oldTrack.CurrentPositionX;
