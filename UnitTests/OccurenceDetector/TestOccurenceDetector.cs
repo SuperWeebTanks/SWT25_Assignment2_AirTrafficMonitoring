@@ -39,7 +39,7 @@ namespace OccurrenceDetector.Unit.Test
             }
 
             [Test]
-            public void OccurenceDetector_Occurence_EventFired()
+            public void CheckOccurrence_BothDistancesBelowThreshold_EventFired()
             {
                 _occurenceTrack.CurrentAltitude = 1200;
                 _occurenceTrack.CurrentPositionX = 5000;
@@ -52,7 +52,7 @@ namespace OccurrenceDetector.Unit.Test
             }
 
             [Test]
-            public void OccurenceDetector_NoOccurence_EventNotFired()
+            public void CheckOccurrence_BothDistancesAboveThreshold_EventNotFired()
             {
                 _occurenceTrack.CurrentAltitude = 18000;
                 _occurenceTrack.CurrentPositionX = 32000;
@@ -65,7 +65,7 @@ namespace OccurrenceDetector.Unit.Test
             }
 
             [Test]
-            public void OccurenceDetector_SameXandYDifferentAltitude_EventNotFired()
+            public void CheckOccurrence_OnlyHorizontalDistanceBelowThreshold_EventNotFired()
             {
                 _occurenceTrack.CurrentAltitude = 18000;
                 _occurenceTrack.CurrentPositionX = 5000;
@@ -78,7 +78,7 @@ namespace OccurrenceDetector.Unit.Test
             }
 
             [Test]
-            public void OccurenceDetector_DifferentXandYSameAltitude_EventNotFired()
+            public void CheckOccurrence_OnlyAltitudeDistanceBelowThreshold_EventNotFired()
             {
                 _occurenceTrack.CurrentAltitude = 1000;
                 _occurenceTrack.CurrentPositionX = 80000;
@@ -91,7 +91,7 @@ namespace OccurrenceDetector.Unit.Test
             }
 
             [Test]
-            public void OccurenceDetector_Occurence_CorrectObservedTrackReceived()
+            public void CheckOccurrence_BothDistancesBelowThreshold_CorrectObservedTrackReceived()
             {
                 _occurenceTrack.CurrentAltitude = 1200;
                 _occurenceTrack.CurrentPositionX = 5000;
@@ -105,7 +105,7 @@ namespace OccurrenceDetector.Unit.Test
             }
 
             [Test]
-            public void OccurrenceDetector_Occurence_CorrectOccurenceTrackReceived()
+            public void CheckOccurrences_BothDistancesBelowThreshold_CorrectOccurenceTrackReceived()
             {
                 _occurenceTrack.CurrentAltitude = 1000;
                 _occurenceTrack.CurrentPositionX = 7000;
