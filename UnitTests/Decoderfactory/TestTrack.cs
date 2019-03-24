@@ -111,6 +111,7 @@ namespace DecodeFactory.Test.Unit
             Assert.Throws<ArgumentException>(() => _uut.CurrentCompassCourse = 1000); 
         }
 
+        [Test]
         public void OverloadedEqualOperator_TracksAreEqual_ReturnsTrue()
         {
             //Arrange 
