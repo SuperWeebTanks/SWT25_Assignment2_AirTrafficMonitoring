@@ -19,6 +19,8 @@ namespace SWT25_Assignment2_AirTrafficMonitoring
     public interface ISignalForwarder
     {
         event EventHandler<TrackDataEventArgs> TrackDataEvent;
+        void AirportReceiverHandler(object sender, RawTransponderDataEventArgs e);
+        List<Track> FilterTracks(List<Track> tracks);
     }
     
     public class Airport : ISignalForwarder
