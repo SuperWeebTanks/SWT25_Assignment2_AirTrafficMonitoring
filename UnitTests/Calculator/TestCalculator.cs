@@ -28,7 +28,7 @@ namespace DecodeFactory.Test.Unit
         public void CalculateHorizontalDistance_FindHorizontalDistanceBetweenTwoTracks_ReturnsDistance()
         {
             //Arrange
-            double result; 
+            double result;
             OldTrack.CurrentPositionX = 2000;
             OldTrack.CurrentPositionY = 4000; 
             UpdatedTrack.CurrentPositionX = 2200;
